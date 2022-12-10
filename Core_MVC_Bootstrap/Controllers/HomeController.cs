@@ -32,6 +32,11 @@ namespace Core_MVC_Bootstrap.Controllers
         {
             return Json("This is About Us Page");
         }
+        
+        public IActionResult ContactUs()
+        {
+            return Json("This is Contact Us Page");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
