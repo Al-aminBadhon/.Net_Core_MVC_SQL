@@ -30,7 +30,7 @@ namespace Core_MVC_Bootstrap.Controllers
         
         public IActionResult AboutUs()
         {
-            return Json("This is About Us Page");
+            return View();
         }
         
         public IActionResult ContactUs()
