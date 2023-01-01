@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="msapplication-TileColor" content="#0E0E0E">
     <meta name="template-color" content="#0E0E0E">
-    <link rel="manifest" href="manifest.json" crossorigin>
+    @*<link rel="manifest" href="manifest.json" crossorigin>*@
     <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="description" content="Index page">
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="FrontEnd/assets/imgs/template/favicon.svg">
-    <link href="FrontEnd/assets/css/style.css?version=4.1" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/frontend/assets/imgs/template/favicon.svg">
+    <link href="~/frontend/assets/css/style.css?version=4.1" rel="stylesheet">
+
     <title>MARINE HIVE LTD </title>
   </head>
   <body>
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
-                <div class="text-center"><img src="FrontEnd/assets/imgs/template/loading.gif" alt="jobBox"></div>
+                <div class="text-center"><img src="~/frontend/assets/imgs/template/loading.gif" alt="MarineHive"></div>
             </div>
         </div>
     </div>
@@ -68,11 +69,12 @@
             </div>
         </div>
     </div>
+
     <header class="header sticky-bar">
         <div class="container">
             <div class="main-header">
                 <div class="header-left">
-                    <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox" src="FrontEnd/assets/imgs/template/jobhub-logo.svg"></a></div>
+                    <div class="header-logo"><a class="d-flex" asp-controller="Home" asp-action="Index" ><img alt="MarineHive" src="~/frontend/assets/imgs/template/jobhub-logo.svg"></a></div>
                 </div>
                 <div class="header-nav">
                     <nav class="nav-main-menu">
@@ -142,7 +144,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a  asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a  asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                             </li>
                             <li class="dashboard"><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
                         </ul>
@@ -330,14 +332,14 @@
     <main class="main">
         @RenderBody()
 
-        <script src="FrontEnd/assets/js/plugins/counterup.js"></script>
+        <script src="~/frontend/assets/js/plugins/counterup.js"></script>
     </main>
 
     <footer class="footer mt-50">
         <div class="container">
             <div class="row">
                 <div class="footer-col-1 col-md-3 col-sm-12">
-                    <a href="index.html"><img alt="jobBox" src="FrontEnd/assets/imgs/template/jobhub-logo.svg"></a>
+                    <a href="index.html"><img alt="jobBox" src="~/frontend/assets/imgs/template/jobhub-logo.svg"></a>
                     <div class="mt-20 mb-20 font-xs color-text-paragraph-2">JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.</div>
                     <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
                 </div>
@@ -380,7 +382,7 @@
                 <div class="footer-col-6 col-md-3 col-sm-12">
                     <h6 class="mb-20">Download App</h6>
                     <p class="color-text-paragraph-2 font-xs">Download our Apps and get extra 15% Discount on your first Order&mldr;!</p>
-                    <div class="mt-15"><a class="mr-5" href="#"><img src="FrontEnd/assets/imgs/template/icons/app-store.png" alt="joxBox"></a><a href="#"><img src="FrontEnd/assets/imgs/template/icons/android.png" alt="joxBox"></a></div>
+                    <div class="mt-15"><a class="mr-5" href="#"><img src="~/frontend/assets/imgs/template/icons/app-store.png" alt="joxBox"></a><a href="#"><img src="~/frontend/assets/imgs/template/icons/android.png" alt="joxBox"></a></div>
                 </div>
             </div>
             <div class="footer-bottom mt-50">
@@ -393,19 +395,19 @@
             </div>
         </div>
     </footer>
-    <script src="FrontEnd/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="FrontEnd/assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="FrontEnd/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="FrontEnd/assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="FrontEnd/assets/js/plugins/waypoints.js"></script>
-    <script src="FrontEnd/assets/js/plugins/wow.js"></script>
-    <script src="FrontEnd/assets/js/plugins/magnific-popup.js"></script>
-    <script src="FrontEnd/assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="FrontEnd/assets/js/plugins/select2.min.js"></script>
-    <script src="FrontEnd/assets/js/plugins/isotope.js"></script>
-    <script src="FrontEnd/assets/js/plugins/scrollup.js"></script>
-    <script src="FrontEnd/assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="FrontEnd/assets/js/plugins/counterup.js"></script>
-    <script src="FrontEnd/assets/js/main.js?v=4.1"></script>
+    <script src="~/frontend/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/frontend/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/frontend/assets/js/plugins/waypoints.js"></script>
+    <script src="~/frontend/assets/js/plugins/wow.js"></script>
+    <script src="~/frontend/assets/js/plugins/magnific-popup.js"></script>
+    <script src="~/frontend/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/frontend/assets/js/plugins/select2.min.js"></script>
+    <script src="~/frontend/assets/js/plugins/isotope.js"></script>
+    <script src="~/frontend/assets/js/plugins/scrollup.js"></script>
+    <script src="~/frontend/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="~/frontend/assets/js/plugins/counterup.js"></script>
+    <script src="~/frontend/assets/js/main.js?v=4.1"></script>
 </body>
 </html>
