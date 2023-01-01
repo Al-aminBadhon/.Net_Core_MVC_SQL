@@ -35,7 +35,7 @@ namespace Core_MVC_Bootstrap.Controllers
         
         public IActionResult ContactUs()
         {
-            return Json("This is Contact Us Page");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
