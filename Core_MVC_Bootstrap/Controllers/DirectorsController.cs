@@ -12,7 +12,7 @@ namespace App.Home.Controllers
         {
             _mHDBContext = mHDBContext;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Directors()
         {
             var demo = await _mHDBContext.TblDirectors.ToListAsync();
             return View(demo);
