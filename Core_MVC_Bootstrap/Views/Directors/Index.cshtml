@@ -1,0 +1,56 @@
+﻿@model IEnumerable<App.Home.Models.TblDirectors>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="box-content">
+
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-35">Directors</h3>
+        </div>
+        <div class="box-breadcrumb">
+                <a class="btn btn-default" asp-action="Create">Create New</a>
+        </div>
+    </div>
+   
+    <div class="row">
+        <table>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="col-xl-12 col-12">
+                                <div class="card-grid-2 hover-up">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="card-grid-2-image-left">
+                                                <div class="image-box"><img src="~/dashBoard/assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+                                                <div class="right-info"><a class="name-job" href=""> @Html.DisplayFor(modelItem => item.DirectorName)</a><span class="location">@Html.DisplayFor(modelItem => item.Designation)</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-block-info">
+                                         <h3>@Html.DisplayFor(modelItem => item.CompanyPost)</h3>
+                                        <p class="font-sm color-text-paragraph mt-10">@Html.DisplayFor(modelItem => item.Details)</p>
+                                        <div class="card-2-bottom mt-20">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-12 text-end">
+                                                    <a class="btn btn-apply-now" asp-action="Edit" asp-route-id="@item.DirectorId">Update</a>
+                                                    @*<a class="btn btn-info"  asp-action="Details" asp-route-id="@item.DirectorId">Details</a> *@
+                                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.DirectorId">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
