@@ -38,9 +38,9 @@
                                         <div class="card-2-bottom mt-20">
                                             <div class="row">
                                                 <div class="col-lg-12 col-12 text-end">
-                                                    <a class="btn btn-apply-now" asp-action="Edit" asp-route-id="@item.DirectorId">Update</a>
+                                                    <a class="btn btn-apply-now" asp-controller="Directors" asp-action="Edit" asp-route-id="@item.DirectorId">Update</a>
                                                     @*<a class="btn btn-info"  asp-action="Details" asp-route-id="@item.DirectorId">Details</a> *@
-                                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.DirectorId">Delete</a>
+                                                    <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@item.DirectorId">Delete</a>
                                                 </div>
                                             </div>
                                         </div>

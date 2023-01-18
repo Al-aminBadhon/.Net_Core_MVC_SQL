@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using App.Home.Data;
 using App.Home.Models;
+using System.Data;
 
 namespace App.Home.Controllers
 {
