@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using App.Home.Models;
+using App.DAL.Models;
 
-namespace App.Home.Data
+namespace App.DAL.Data
 {
     public partial class MHDBContext : DbContext
     {

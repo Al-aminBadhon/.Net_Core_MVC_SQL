@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="~/dashBoard/assets/imgs/template/favicon.svg">
     <link href="~/dashBoard/assets/css/style.css?version=4.1" rel="stylesheet">
-
+    
     <title>MARINE HIVE LTD </title>
 </head>
 <body>
@@ -190,7 +190,7 @@
             <nav class="nav-main-menu">
                 <ul class="main-menu">
                     <li>
-                        <a class="dashboard2 active" href="index.html"><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
+                        <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex" ><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
                     </li>
                     <li>
                         <a class="dashboard2" href="candidates.html"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Crew</span></a>
@@ -214,7 +214,7 @@
                         <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2"  asp-controller="Directors" asp-action="Directors"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
+                        <a class="dashboard2"  asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
                         @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
 
                     </li>
@@ -297,5 +297,16 @@
     <script src="~/dashBoard/assets/js/plugins/charts/Animated.js"></script>
     <script src="~/dashBoard/assets/js/plugins/armcharts5-script.js"></script>
     <script src="~/dashBoard/assets/js/main.js?v=4.1"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            $('.main-menu').find('[href="' + window.location.pathname + '"]').addClass('active');   
+        });
+
+
+    </script>
+
 </body>
 </html>
