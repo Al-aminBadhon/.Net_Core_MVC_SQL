@@ -1,4 +1,4 @@
-﻿using Core_MVC_Bootstrap.Models;
+﻿using App.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

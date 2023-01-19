@@ -1,4 +1,4 @@
-using App.Home.Data;
+using App.DAL.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

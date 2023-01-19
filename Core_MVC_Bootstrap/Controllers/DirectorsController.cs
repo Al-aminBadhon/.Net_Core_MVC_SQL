@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using App.Home.Data;
-using App.Home.Models;
+using App.DAL.Data;
+using App.DAL.Models;
 using System.Data;
 
 namespace App.Home.Controllers

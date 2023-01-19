@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace App.Home.Models
+namespace App.DAL.Models
 {
     public partial class TblLoginHistory
     {

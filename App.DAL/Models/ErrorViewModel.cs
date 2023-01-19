@@ -1,6 +1,6 @@
 using System;
 
-namespace Core_MVC_Bootstrap.Models
+namespace App.DAL.Models
 {
     public class ErrorViewModel
     {
