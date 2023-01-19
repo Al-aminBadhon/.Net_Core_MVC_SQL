@@ -15,8 +15,8 @@
     <link href="~/frontend/assets/css/style.css?version=4.1" rel="stylesheet">
 
     <title>MARINE HIVE LTD </title>
-  </head>
-  <body>
+</head>
+<body>
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -80,7 +80,7 @@
                     <nav class="nav-main-menu">
                         <ul class="main-menu">
                             <li class="has-children">
-                                <a class="active" href="index.html">Home</a>
+                                <a asp-controller="Home" asp-action="Index">Home</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.html">Home 1</a></li>
                                     <li><a href="index-2.html">Home 2</a></li>
@@ -144,16 +144,16 @@
                                 </ul>
                             </li>
                             <li>
-                                <a  asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                                <a asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                             </li>
                             <li>
-                                <a  asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                                <a asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
                             </li>
                             <li class="dashboard">
                                 @*<a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a>*@
                                 <a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>
 
-                                </li>
+                            </li>
                         </ul>
                     </nav>
                     <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
@@ -231,7 +231,7 @@
                                         <li><a href="blog-details.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
+                                <li><a asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -317,7 +317,8 @@
                                         <li><a href="blog-details.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
+                                <li><a asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a></li>
+
                             </ul>
                         </nav>
                     </div>
@@ -416,5 +417,14 @@
     <script src="~/frontend/assets/js/plugins/swiper-bundle.min.js"></script>
     <script src="~/frontend/assets/js/plugins/counterup.js"></script>
     <script src="~/frontend/assets/js/main.js?v=4.1"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.main-menu').find('[href="' + window.location.pathname + '"]').addClass('active');
+        });
+
+
+    </script>
+
 </body>
 </html>
