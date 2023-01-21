@@ -4,6 +4,13 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
+
+@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+
+<script src="~/frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="~/frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="~/Scripts/Directors/CreateDirector.js"></script>
+
 <div class="box-content">
 
     <div class="box-heading">
@@ -21,51 +28,51 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                @* <div class="form-group">
                     <label asp-for="DirectorId" class="control-label"></label>
-                    <input asp-for="DirectorId" class="form-control" />
+                    <input id="" data-member="" id="" data-member="" asp-for="DirectorId" class="form-control" />
                     <span asp-validation-for="DirectorId" class="text-danger"></span>
                 </div>*@
                 <div class="form-group">
-                    <label class="control-label">Director Name</label>
-                    <input asp-for="DirectorName" class="form-control" />
+                    <label  class="control-label">Director Name</label>
+                    <input id="DirectorName" data-member="DirectorName" asp-for="DirectorName" class="form-control" />
                     <span asp-validation-for="DirectorName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Designation" class="control-label"></label>
-                    <input asp-for="Designation" class="form-control" />
+                    <input id="Designation" data-member="Designation" asp-for="Designation" class="form-control" />
                     <span asp-validation-for="Designation" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="CompanyPost" class="control-label"></label>
-                    <input asp-for="CompanyPost" class="form-control" />
+                    <input id="CompanyPost" data-member="CompanyPost" asp-for="CompanyPost" class="form-control" />
                     <span asp-validation-for="CompanyPost" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Image" class="control-label"></label>
-                    <input asp-for="Image" class="form-control" />
+                    <input id="Image" data-member="Image" asp-for="Image" class="form-control" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Details" class="control-label"></label>
-                    <input asp-for="Details" class="form-control" />
+                    <input id="Details" data-member="Details" asp-for="Details" class="form-control" />
                     <span asp-validation-for="Details" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="FacebookLink" class="control-label"></label>
-                    <input asp-for="FacebookLink" class="form-control" />
+                    <input id="" data-member="" asp-for="FacebookLink" class="form-control" />
                     <span asp-validation-for="FacebookLink" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="TwitterLink" class="control-label"></label>
-                    <input asp-for="TwitterLink" class="form-control" />
+                    <input id="" data-member="" asp-for="TwitterLink" class="form-control" />
                     <span asp-validation-for="TwitterLink" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="LinkedInLink" class="control-label"></label>
-                    <input asp-for="LinkedInLink" class="form-control" />
+                    <input id="" data-member="" asp-for="LinkedInLink" class="form-control" />
                     <span asp-validation-for="LinkedInLink" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input id="btnSaveDirector" type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </form>
         </div>
