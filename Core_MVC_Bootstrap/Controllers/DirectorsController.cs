@@ -23,6 +23,7 @@ namespace App.Home.Controllers
         // GET: Directors
         public async Task<IActionResult> Index()
         {
+           
             return View(await _context.TblDirectors.ToListAsync());
         }
 

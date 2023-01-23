@@ -20,6 +20,7 @@ namespace Core_MVC_Bootstrap.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 

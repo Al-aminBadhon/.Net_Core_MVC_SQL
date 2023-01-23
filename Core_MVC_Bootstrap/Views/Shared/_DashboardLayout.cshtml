@@ -13,10 +13,11 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="~/dashBoard/assets/imgs/template/favicon.svg">
     <link href="~/dashBoard/assets/css/style.css?version=4.1" rel="stylesheet">
-    
-    <title>MARINE HIVE LTD </title>
+
+    <title>@ViewData["userID"] | MARINE HIVE LTD </title>
 </head>
 <body>
+
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -75,14 +76,14 @@
             <div class="main-header">
                 <div class="header-left">
                     <div class="header-logo"><a class="d-flex" asp-controller="Dashboard" asp-action="DashBoardIndex"><img alt="jobBox" src="~/frontend/assets/logo.jpeg" width="150" height="30"></a></div><span class="btn btn-grey-small ml-10">Dashboard area</span>
-                    
+
                 </div>
-              @*  <div class="header-search">
-                    <div class="box-search">
-                        <form action="">
-                            <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
-                        </form>
-                    </div>
+                @*  <div class="header-search">
+                <div class="box-search">
+                <form action="">
+                <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
+                </form>
+                </div>
                 </div>*@
                 <div class="header-menu d-none d-md-block">
                     <ul>
@@ -94,13 +95,13 @@
                 <div class="header-right">
                     <div class="block-signin">
                         @*<a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a>*@
-                       @* <div class="dropdown d-inline-block">
-                            <a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                            <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownNotify">
-                                <li><a class="dropdown-item active" href="#">10 notifications</a></li>
-                                <li><a class="dropdown-item" href="#">12 messages</a></li>
-                                <li><a class="dropdown-item" href="#">20 replies</a></li>
-                            </ul>
+                        @* <div class="dropdown d-inline-block">
+                        <a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
+                        <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownNotify">
+                        <li><a class="dropdown-item active" href="#">10 notifications</a></li>
+                        <li><a class="dropdown-item" href="#">12 messages</a></li>
+                        <li><a class="dropdown-item" href="#">20 replies</a></li>
+                        </ul>
                         </div>*@
                         <div class="member-login">
                             <img alt="" src="~/dashBoard/assets/imgs/page/dashboard/profile.png">
@@ -179,7 +180,7 @@
                         </ul>
                         <div class="mb-15 mt-15"> <a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a></div>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -190,7 +191,7 @@
             <nav class="nav-main-menu">
                 <ul class="main-menu">
                     <li>
-                        <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex" ><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
+                        <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
                     </li>
                     <li>
                         <a class="dashboard2" href="candidates.html"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Crew</span></a>
@@ -213,11 +214,16 @@
                     <li>
                         <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
-                    <li>
-                        <a class="dashboard2"  asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
-                        @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
+                   @* @if ((ViewData["userID"]).ToString() == "Admin")
+                        {*@
+                            <li>
+                                <a class="dashboard2" asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
+                                @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
 
-                    </li>
+                            </li>
+                        @*}*@
+
+
                     <li>
                         <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
@@ -231,14 +237,14 @@
             </nav>
             @*<div class="border-bottom mb-20 mt-20"></div>
             <div class="box-profile-completed text-center mb-30">
-                <div id="circle-staticstic-demo"></div>
-                <h6 class="mb-10">Profile Completed</h6>
-                <p class="font-xs color-text-mutted">Please add detailed information to your profile. This will help you develop your career more quickly.</p>
+            <div id="circle-staticstic-demo"></div>
+            <h6 class="mb-10">Profile Completed</h6>
+            <p class="font-xs color-text-mutted">Please add detailed information to your profile. This will help you develop your career more quickly.</p>
             </div>
             <div class="sidebar-border-bg mt-50">
-                <span class="text-grey">WE ARE</span><span class="text-hiring">HIRING</span>
-                <p class="font-xxs color-text-paragraph mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto</p>
-                <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
+            <span class="text-grey">WE ARE</span><span class="text-hiring">HIRING</span>
+            <p class="font-xxs color-text-paragraph mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto</p>
+            <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
             </div>*@
         </div>
         @RenderBody()
@@ -301,8 +307,8 @@
 
 
     <script>
-        $(document).ready(function(){
-            $('.main-menu').find('[href="' + window.location.pathname + '"]').addClass('active');   
+        $(document).ready(function () {
+            $('.main-menu').find('[href="' + window.location.pathname + '"]').addClass('active');
         });
 
 

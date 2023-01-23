@@ -6,6 +6,7 @@ namespace App.Home.Controllers
     {
         public IActionResult DashboardIndex()
         {
+            ViewData["UserID"] = "Admin";
             return View();
         }
     }
