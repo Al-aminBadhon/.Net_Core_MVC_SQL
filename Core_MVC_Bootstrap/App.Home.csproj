@@ -22,4 +22,8 @@
     <ProjectReference Include="..\App.BLL\App.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DBContextUpdate\" />
+  </ItemGroup>
+
 </Project>
