@@ -18,6 +18,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DBContextUpdate\" />
+  </ItemGroup>
+
 
 
 </Project>
