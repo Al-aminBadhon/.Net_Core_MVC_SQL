@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using App.DAL.Data;
 using App.DAL.Models;
 using System.Data;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace App.Home.Controllers
 {
@@ -99,6 +100,10 @@ namespace App.Home.Controllers
             {
                 try
                 {
+                    //using (IDbContextTransaction transaction = _context.Database.BeginTransaction()) {
+                    //    transaction.Commit();
+                    //    transaction.Rollback();
+                    //}
                     _context.Update(tblDirectors);
                     await _context.SaveChangesAsync();
                 }
