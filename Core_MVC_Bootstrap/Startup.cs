@@ -1,4 +1,8 @@
+using App.BLL.ServiceContracts;
+using App.BLL.Services;
 using App.DAL.Data;
+using App.DAL.Repositories;
+using App.DAL.RepositoryContracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +32,11 @@ namespace Core_MVC_Bootstrap
         {
             services.AddControllersWithViews();
             services.AddDbContext<MHDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+
+            services.AddTransient<IDirectorsService, DirectorsService>();
+            services.AddTransient<IDirectorsRepository, DirectorsRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

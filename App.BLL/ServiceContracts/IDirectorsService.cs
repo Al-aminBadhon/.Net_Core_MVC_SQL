@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.DAL.RepositoryContracts
+namespace App.BLL.ServiceContracts
 {
-    public interface IDirectorsRepository/*<TModel> where TModel : class*/
+    public interface IDirectorsService
     {
         Task<List<TblDirectors>> GetAllDirectors();
-
     }
 }
