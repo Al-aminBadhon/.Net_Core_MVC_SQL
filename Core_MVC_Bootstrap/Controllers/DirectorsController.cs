@@ -9,23 +9,25 @@ using App.DAL.Data;
 using App.DAL.Models;
 using System.Data;
 using Microsoft.EntityFrameworkCore.Storage;
+using App.BLL.Services;
+using App.BLL.ServiceContracts;
 
 namespace App.Home.Controllers
 {
     public class DirectorsController : Controller
     {
         private readonly MHDBContext _context;
-
-        public DirectorsController(MHDBContext context)
+        private readonly IDirectorsService _directorsService;
+        public DirectorsController(IDirectorsService directorsService)
         {
-            _context = context;
+            this._directorsService = directorsService;
         }
 
         // GET: Directors
         public async Task<IActionResult> Index()
         {
-           
-            return View(await _context.TblDirectors.ToListAsync());
+            List<TblDirectors> listDirectors = await _directorsService.GetAllDirectors();
+            return View(listDirectors);
         }
 
         // GET: Directors/Details/5
