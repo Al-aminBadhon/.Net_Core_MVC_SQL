@@ -18,9 +18,10 @@ namespace App.Home.Controllers
     {
         private readonly MHDBContext _context;
         private readonly IDirectorsService _directorsService;
-        public DirectorsController(IDirectorsService directorsService)
+        public DirectorsController(IDirectorsService directorsService, MHDBContext mHDBContext)
         {
             this._directorsService = directorsService;
+            this._context = mHDBContext;
         }
 
         // GET: Directors

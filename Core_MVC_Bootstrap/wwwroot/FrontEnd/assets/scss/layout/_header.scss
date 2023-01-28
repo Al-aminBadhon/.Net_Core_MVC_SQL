@@ -17,6 +17,7 @@
             display: inline-block;
             width: 100%;
             text-align: center;
+            padding-left: 1%;
         }
         .header-left {
             display: flex;
@@ -36,7 +37,7 @@
     .main-menu {
         li {
             float: left;
-            padding: 10px 22px;
+            padding: 10px 17px;
             position: relative;
             &.dashboard {
                 a {
