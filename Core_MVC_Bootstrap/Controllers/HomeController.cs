@@ -24,7 +24,11 @@ namespace Core_MVC_Bootstrap.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult CoreValues()
+        {
+            return View();
+        }
+        public IActionResult MissionVision()
         {
             return View();
         }
@@ -38,6 +42,29 @@ namespace Core_MVC_Bootstrap.Controllers
         {
             return View();
         }
+
+        public IActionResult PrivacyStatement()
+        {
+            return View();
+        }
+        public IActionResult WhyBDCrew()
+        {
+            return View();
+        }
+        public IActionResult CrewManning()
+        {
+            return View();
+        }
+        public IActionResult PortAgency()
+        {
+            return View();
+        }
+        public IActionResult TechServices()
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
