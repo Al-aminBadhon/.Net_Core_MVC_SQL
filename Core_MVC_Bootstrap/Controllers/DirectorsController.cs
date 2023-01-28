@@ -40,6 +40,7 @@ namespace App.Home.Controllers
 
             var tblDirectors = await _context.TblDirectors
                 .FirstOrDefaultAsync(m => m.DirectorId == id);
+           
             if (tblDirectors == null)
             {
                 return NotFound();
