@@ -7,9 +7,10 @@
             <div class="row">
                 <div class="col-xl-7 col-lg-12">
                     <div class="block-banner">
+                        <h1 class="heading-banner wow animate__animated animate__fadeInUp">We Are Marine Hive</h1>
                         <h1 class="heading-banner wow animate__animated animate__fadeInUp">Find Jobs,<br class="d-none d-lg-block">Hire Creatives</h1>
                         <div class="banner-description mt-20 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Each month, more than 3 million job seekers turn to website in their search for work, making over 140,000 applications every single day</div>
-                        <div class="mt-30"> <a class="btn btn-default mr-15">Get Started</a><a class="btn btn-border-brand-2">Learn more</a></div>
+                        <div class="mt-30"> <a class="btn btn-default mr-15" asp-controller="Directors" asp-action="Index">Find Job</a><a asp-controller="Home" asp-action="AboutUs" class="btn btn-border-brand-2">Learn more</a></div>
 
                     </div>
                 </div>
@@ -23,6 +24,35 @@
                         <div class="banner-6 shape-1"><img class="img-responsive" alt="jobBox" src="FrontEnd/assets/imgs/page/homepage5/banner6.png"></div>
                     </div>
                 </div>  
+            </div>
+            <div class="box-search-2">
+              <div class="block-banner">
+                <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
+                  <form>
+                    <input class="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... ">
+                    <select class="form-input mr-10 select-active">
+                      <option value="">Location</option>
+                      <option value="AX">Dhaka</option>
+                      <option value="AF">Khulna</option>
+                      <option value="AF">Chitagong</option>
+                      <option value="AF">Sylhet</option>
+                      
+                    </select>
+                    <div class="box-industry">
+                      <select class="form-input mr-10 select-active input-industry">
+                        <option value="0">Industry</option>
+                        <option value="1">Software</option>
+                        <option value="2">Finance</option>
+                        <option value="3">Recruting</option>
+                        <option value="4">Management</option>
+                        <option value="5">Advertising</option>
+                        <option value="6">Development</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-default btn-find font-sm">Search</button>
+                  </form>
+                </div>
+              </div>
             </div>
         </div>
     </div>
