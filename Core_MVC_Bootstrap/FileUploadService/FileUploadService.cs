@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using App.DAL.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+
 
 namespace App.Home.FileUploadService
 {
@@ -14,10 +16,15 @@ namespace App.Home.FileUploadService
             this._webHostEnvironment = webHostEnvironment;
         }
 
-        public Task<string> UploadImage(IFormFile formFile)
+        public async Task<string> UploadImageDirector(TblDirectors tblDirectors)
         {
-          
-            return  null;
+            var locationWithName = "images/directors/";
+            locationWithName += Guid.NewGuid().ToString() + "_" + tblDirectors.PhotoUpload.FileName;
+            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
+            await tblDirectors.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
+            var imagePath = "/" + locationWithName;
+
+            return imagePath;
         }
     }
 }

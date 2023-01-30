@@ -14,6 +14,7 @@ using App.BLL.ServiceContracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using App.Home.FileUploadService;
 
 namespace App.Home.Controllers
 {
@@ -22,12 +23,15 @@ namespace App.Home.Controllers
         private readonly MHDBContext _context;
         private readonly IDirectorsService _directorsService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IFileUploadService _fileUploadService;
 
-        public DirectorsController(IDirectorsService directorsService, MHDBContext mHDBContext, IWebHostEnvironment webHostEnvironment)
+
+        public DirectorsController(IDirectorsService directorsService, MHDBContext mHDBContext, IWebHostEnvironment webHostEnvironment, IFileUploadService fileUploadService)
         {
             this._directorsService = directorsService;
             this._context = mHDBContext;
-            this._webHostEnvironment = webHostEnvironment;
+            this._fileUploadService = fileUploadService;
+
 
         }
 
@@ -36,25 +40,6 @@ namespace App.Home.Controllers
         {
             List<TblDirectors> listDirectors = await _directorsService.GetAllDirectors();
             return View(listDirectors);
-        }
-
-        // GET: Directors/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblDirectors = await _context.TblDirectors
-                .FirstOrDefaultAsync(m => m.DirectorId == id);
-
-            if (tblDirectors == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblDirectors);
         }
 
         // GET: Directors/Create
@@ -75,10 +60,7 @@ namespace App.Home.Controllers
                 //_directorsService.CreateDirectors(tblDirectors);
                 if (tblDirectors.PhotoUpload != null)
                 {
-                    var locationWithName = "images/directors";
-                    locationWithName += Guid.NewGuid().ToString() + "_" + tblDirectors.PhotoUpload.FileName;
-                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
-                    await tblDirectors.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                   
                 }
                 _context.Add(tblDirectors);
                 await _context.SaveChangesAsync();
@@ -104,8 +86,6 @@ namespace App.Home.Controllers
         }
 
         // POST: Directors/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, /*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,PhotoUpload")]*/ TblDirectors tblDirectors)
@@ -126,17 +106,10 @@ namespace App.Home.Controllers
                     var imagePath = "";
                     if (tblDirectors.PhotoUpload != null)
                     {
-                        var locationWithName = "images/directors/";
-                        locationWithName += Guid.NewGuid().ToString() + "_" + tblDirectors.PhotoUpload.FileName;
-                        var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
-                        await tblDirectors.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
-                        imagePath = "/"+ locationWithName;
+                        imagePath = await _fileUploadService.UploadImageDirector(tblDirectors);
+                        tblDirectors.Image = imagePath;
                     }
-
-                    tblDirectors.Image = imagePath;
-
-                    _context.Update(tblDirectors);
-                    await _context.SaveChangesAsync();
+                    tblDirectors = await _directorsService.UpdateDirectors(tblDirectors);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
