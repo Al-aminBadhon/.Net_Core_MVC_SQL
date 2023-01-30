@@ -11,6 +11,9 @@ using System.Data;
 using Microsoft.EntityFrameworkCore.Storage;
 using App.BLL.Services;
 using App.BLL.ServiceContracts;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace App.Home.Controllers
 {
@@ -18,10 +21,14 @@ namespace App.Home.Controllers
     {
         private readonly MHDBContext _context;
         private readonly IDirectorsService _directorsService;
-        public DirectorsController(IDirectorsService directorsService, MHDBContext mHDBContext)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public DirectorsController(IDirectorsService directorsService, MHDBContext mHDBContext, IWebHostEnvironment webHostEnvironment)
         {
             this._directorsService = directorsService;
             this._context = mHDBContext;
+            this._webHostEnvironment = webHostEnvironment;
+
         }
 
         // GET: Directors
@@ -41,7 +48,7 @@ namespace App.Home.Controllers
 
             var tblDirectors = await _context.TblDirectors
                 .FirstOrDefaultAsync(m => m.DirectorId == id);
-           
+
             if (tblDirectors == null)
             {
                 return NotFound();
@@ -65,6 +72,14 @@ namespace App.Home.Controllers
         {
             if (ModelState.IsValid)
             {
+                //_directorsService.CreateDirectors(tblDirectors);
+                if (tblDirectors.PhotoUpload != null)
+                {
+                    var locationWithName = "images/directors";
+                    locationWithName += Guid.NewGuid().ToString() + "_" + tblDirectors.PhotoUpload.FileName;
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
+                    await tblDirectors.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                }
                 _context.Add(tblDirectors);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -93,7 +108,7 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblDirectors tblDirectors)
+        public async Task<IActionResult> Edit(int id, /*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,PhotoUpload")]*/ TblDirectors tblDirectors)
         {
             if (id != tblDirectors.DirectorId)
             {
@@ -108,6 +123,18 @@ namespace App.Home.Controllers
                     //    transaction.Commit();
                     //    transaction.Rollback();
                     //}
+                    var imagePath = "";
+                    if (tblDirectors.PhotoUpload != null)
+                    {
+                        var locationWithName = "images/directors/";
+                        locationWithName += Guid.NewGuid().ToString() + "_" + tblDirectors.PhotoUpload.FileName;
+                        var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
+                        await tblDirectors.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                        imagePath = "/"+ locationWithName;
+                    }
+
+                    tblDirectors.Image = imagePath;
+
                     _context.Update(tblDirectors);
                     await _context.SaveChangesAsync();
                 }

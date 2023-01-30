@@ -1,21 +1,26 @@
 ﻿using App.DAL.Data;
 using App.DAL.Models;
 using App.DAL.RepositoryContracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 
 namespace App.DAL.Repositories
 {
     public class DirectorsRepository/*<TModel>*/ : IDirectorsRepository/*<TModel> where TModel : class*/
     {
         private readonly MHDBContext _mHDBContext;
-        public DirectorsRepository(MHDBContext mHDBContext)
+
+
+        public DirectorsRepository(MHDBContext mHDBContext )
         {
             _mHDBContext = mHDBContext;
         }
@@ -31,6 +36,19 @@ namespace App.DAL.Repositories
                 //const String sql = "select a.* from tblDirectors a  where a.IsDeleted = 0";
                 //directors = _mHDBContext.Database.ExecuteSqlCommand(sql);
                 return directors;
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+         public async Task<TblDirectors> CreateDirectors(TblDirectors model)
+        {
+            try
+            {
+               
+                return model;
             }
             catch
             {

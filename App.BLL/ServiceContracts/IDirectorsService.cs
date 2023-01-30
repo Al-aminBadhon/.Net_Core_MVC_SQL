@@ -9,5 +9,6 @@ namespace App.BLL.ServiceContracts
     public interface IDirectorsService
     {
         Task<List<TblDirectors>> GetAllDirectors();
+        Task<TblDirectors> CreateDirectors(TblDirectors tblDirectors);
     }
 }
