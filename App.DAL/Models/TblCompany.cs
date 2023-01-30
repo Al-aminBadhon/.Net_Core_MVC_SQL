@@ -17,6 +17,7 @@ namespace App.DAL.Models
         public string Phone1 { get; set; }
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
+        public string Image { get; set; }
         public string Email { get; set; }
         public string Country { get; set; }
         public string CompanyDetails { get; set; }

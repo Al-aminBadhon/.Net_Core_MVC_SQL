@@ -1,21 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace App.DAL.Models
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
+namespace App.Home.DBContextUpdate
 {
     public partial class TblDirectors
     {
         public int DirectorId { get; set; }
-        [Required]
         public string DirectorName { get; set; }
-        [Required]
-
         public string Designation { get; set; }
-        [Required]
-
         public string CompanyPost { get; set; }
         public string Image { get; set; }
         public string Details { get; set; }
@@ -27,8 +23,5 @@ namespace App.DAL.Models
         public int? CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedBy { get; set; }
-
-        [NotMapped]
-        public IFormFile PhotoUpload { get; set; }
     }
 }

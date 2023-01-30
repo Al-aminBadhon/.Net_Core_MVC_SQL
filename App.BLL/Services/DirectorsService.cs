@@ -20,5 +20,10 @@ namespace App.BLL.Services
         {
             return await _directorsRepository.GetAllDirectors();
         }
+
+        public async Task<TblDirectors> CreateDirectors(TblDirectors tblDirectors)
+        {
+            return await _directorsRepository.CreateDirectors( tblDirectors);
+        }
     }
 }

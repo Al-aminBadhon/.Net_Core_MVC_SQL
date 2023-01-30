@@ -5,23 +5,23 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace App.DAL.Models
+namespace App.Home.DBContextUpdate
 {
-    public partial class TblUserRole
+    public partial class TblEducationalBackground
     {
-        public TblUserRole()
-        {
-            TblUser = new HashSet<TblUser>();
-        }
-
+        public int EduBackId { get; set; }
         public int UserRoleId { get; set; }
-        public string UserRoleName { get; set; }
-        public bool IsActive { get; set; }
+        public int UserId { get; set; }
+        public string DegreeName { get; set; }
+        public string InstitutionName { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public bool IsDelete { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedBy { get; set; }
-
-        public virtual ICollection<TblUser> TblUser { get; set; }
     }
 }

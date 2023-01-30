@@ -11,7 +11,7 @@ namespace App.DAL.Models
     {
         public int ImageId { get; set; }
         public string Name { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public string Flag { get; set; }
         public bool IsDelete { get; set; }
         public string Details { get; set; }

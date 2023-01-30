@@ -27,7 +27,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="card-grid-2-image-left">
-                                                <div class="image-box"><img src="~/dashBoard/assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+                                                <div class="image-box"><img src="@item.Image" height="100px" width="100px" alt="jobBox"></div>
                                                 <div class="right-info"><a class="name-job" href=""> @Html.DisplayFor(modelItem => item.DirectorName)</a><span class="location">@Html.DisplayFor(modelItem => item.Designation)</span></div>
                                             </div>
                                         </div>
@@ -38,8 +38,8 @@
                                         <div class="card-2-bottom mt-20">
                                             <div class="row">
                                                 <div class="col-lg-12 col-12 text-end">
-                                                    @*<a class="btn btn-apply-now" asp-controller="Directors" asp-action="Edit" asp-route-id="@item.DirectorId">Update</a>*@
-                                                    <a class="btn btn-apply-now" href="@Url.Action("Edit/"+item.DirectorId)">Update</a>
+                                                    <a class="btn btn-apply-now" asp-controller="Directors" asp-action="Edit" asp-route-id="@item.DirectorId">Update</a>
+                                                    @*<a class="btn btn-apply-now" href="@Url.Action("Edit/"+item.DirectorId)">Update</a>*@
                                                     @*<a class="btn btn-info"  asp-action="Details" asp-route-id="@item.DirectorId">Details</a> *@
                                                     <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@item.DirectorId">Delete</a>
                                                 </div>

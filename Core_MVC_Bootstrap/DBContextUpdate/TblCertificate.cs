@@ -5,23 +5,21 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace App.DAL.Models
+namespace App.Home.DBContextUpdate
 {
-    public partial class TblJobs
+    public partial class TblCertificate
     {
-        public int JobId { get; set; }
-        public string JobTitle { get; set; }
+        public int CertificateId { get; set; }
+        public int CerTypeId { get; set; }
         public int UserRoleId { get; set; }
-        public int CompanyId { get; set; }
-        public string JobLevel { get; set; }
-        public string Salary { get; set; }
-        public string Experience { get; set; }
-        public string JobType { get; set; }
-        public DateTime? DeadLine { get; set; }
-        public string Location { get; set; }
-        public bool IsActive { get; set; }
+        public int CerNumber { get; set; }
+        public string CerName { get; set; }
+        public DateTime? DateOfIssue { get; set; }
+        public string PlaceOfIssue { get; set; }
+        public string Details { get; set; }
+        public DateTime? ExpDate { get; set; }
+        public bool IsDelete { get; set; }
         public bool? IsApproved { get; set; }
-        public string JobDetails { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }

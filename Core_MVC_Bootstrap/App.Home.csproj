@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DBContextUpdate\" />
+    <Folder Include="wwwroot\images\directors\" />
   </ItemGroup>
 
 </Project>

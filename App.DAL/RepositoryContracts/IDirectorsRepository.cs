@@ -9,6 +9,7 @@ namespace App.DAL.RepositoryContracts
     public interface IDirectorsRepository/*<TModel> where TModel : class*/
     {
         Task<List<TblDirectors>> GetAllDirectors();
+        Task<TblDirectors> CreateDirectors(TblDirectors tblDirectors);
 
     }
 }
