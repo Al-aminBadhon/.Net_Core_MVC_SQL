@@ -3,6 +3,7 @@ using App.BLL.Services;
 using App.DAL.Data;
 using App.DAL.Repositories;
 using App.DAL.RepositoryContracts;
+using App.Home.FileUploadService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,7 @@ namespace Core_MVC_Bootstrap
 
             services.AddTransient<IDirectorsService, DirectorsService>();
             services.AddTransient<IDirectorsRepository, DirectorsRepository>();
+            services.AddTransient<IFileUploadService, FileUploadService>();
 
         }
 

@@ -10,6 +10,7 @@ namespace App.DAL.RepositoryContracts
     {
         Task<List<TblDirectors>> GetAllDirectors();
         Task<TblDirectors> CreateDirectors(TblDirectors tblDirectors);
+        Task<TblDirectors> UpdateDirectors(TblDirectors tblDirectors);
 
     }
 }

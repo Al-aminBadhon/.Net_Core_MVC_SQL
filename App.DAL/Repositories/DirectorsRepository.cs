@@ -20,9 +20,10 @@ namespace App.DAL.Repositories
         private readonly MHDBContext _mHDBContext;
 
 
-        public DirectorsRepository(MHDBContext mHDBContext )
+        public DirectorsRepository(MHDBContext mHDBContext)
         {
             _mHDBContext = mHDBContext;
+
         }
 
         public async Task<List<TblDirectors>> GetAllDirectors()
@@ -55,6 +56,23 @@ namespace App.DAL.Repositories
                 throw;
             }
 
+        }
+          public async Task<TblDirectors> UpdateDirectors(TblDirectors tblDirectors)
+        {
+            try
+            {
+
+                
+
+                _mHDBContext.Update(tblDirectors);
+                await _mHDBContext.SaveChangesAsync();
+                
+            }
+            catch
+            {
+                throw;
+            }
+            return tblDirectors;
         }
 
     }
