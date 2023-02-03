@@ -1,0 +1,126 @@
+﻿@model IEnumerable<App.DAL.Models.TblDirectors>
+
+@{
+    ViewData["Title"] = "Board Of Directors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+    <script src="~/frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
+</head>
+<main class="main">
+    <section class="section-box">
+        <div class="breacrumb-cover bg-img-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="mb-10">Board of Directors</h2>
+                        <p class="font-lg color-text-paragraph-2">Get the latest news, updates and tips</p>
+                    </div>
+                    <div class="col-lg-6 text-lg-end">
+                        <ul class="breadcrumbs mt-40">
+                            <li><a class="home-icon" href="#">Home</a></li>
+                            <li>Board of Directors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-box mt-50">
+        <div class="post-loop-grid">
+            <div class="container">
+                <div class="text-center">
+                    <h6 class="f-18 color-text-mutted text-uppercase">Our company</h6>
+                    <h2 class="section-title mb-10 wow animate__animated animate__fadeInUp">Meet Our Board of Directors</h2>
+                    @*<p class="font-sm color-text-paragraph w-lg-50 mx-auto wow animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ligula ante, dictum non aliquet eu, dapibus ac quam. Morbi vel ante viverra orci tincidunt tempor eu id ipsum. Sed consectetur, risus a blandit tempor, velit magna pellentesque risus, at congue tellus dui quis nisl.</p>*@
+                </div>
+                <div class="row mt-30">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mb-md-30">
+                            <div class="card-grid-4 text-center hover-up">
+                                <div class="image-top-feature">
+                                    <figure>
+                                        @if (!string.IsNullOrWhiteSpace(item.Image))
+                                        {
+                                            <img alt="@item.DirectorName" src="@item.Image">
+                                        }
+                                        else
+                                        {
+                                            <img alt="@item.DirectorName" src="~/images/directors/no-image.png">
+                                        }
+
+                                    </figure>
+
+                                </div>
+                                <div class="card-grid-4-info">
+                                    <h5 class="mt-10">@item.DirectorName</h5>
+                                    <p class="font-xs color-text-paragraph-2 mt-5 mb-5">@item.Designation</p>
+                                    <div class="rate-reviews-small pt-5">
+                                        <span class="card-briefcase">@item.CompanyPost</span>
+                                        <div class="text-center mt-10">
+                                            <a class="share-facebook social-share-link" href="@item.FacebookLink"></a>
+                                            <a class="share-twitter social-share-link" href="@item.TwitterLink"></a>
+                                            <a class="share-linkedin social-share-link" href="@item.LinkedInLink"></a>
+                                        </div>
+
+
+                                    </div>
+                                    <p align="justify">@item.Details</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+
+                    @*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-md-30">
+                    <div class="card-grid-4 text-center hover-up">
+                    <div class="row">
+                    <div class="col-sm-4">
+                    <div class="image-top-feature">
+                    <figure><img alt="@item.DirectorName" src="@item.Image"></figure>
+                    </div>
+                    <h5 class="mt-10">@item.DirectorName</h5>
+                    <p class="font-xs color-text-paragraph-2 mt-5 mb-5">@item.Designation</p>
+                    <span class="card-location">New York, US</span>
+
+                    <div class="text-center mt-30">
+                    <a class="share-facebook social-share-link" href="@item.FacebookLink"></a>
+                    <a class="share-twitter social-share-link" href="@item.TwitterLink"></a>
+                    <a class="share-linkedin social-share-link" href="@item.LinkedInLink"></a>
+                    </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                    <div class="card-grid-4-info">
+
+                    <div class="rate-reviews-small pt-5">
+                    <p align="justify">@item.Details</p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>*@
+
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+                    @*Another lsit Design ---- like previous site*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+

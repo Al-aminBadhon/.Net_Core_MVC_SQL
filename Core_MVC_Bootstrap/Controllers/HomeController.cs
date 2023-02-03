@@ -1,4 +1,5 @@
-﻿using App.DAL.Models;
+﻿using App.BLL.ServiceContracts;
+using App.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +13,12 @@ namespace Core_MVC_Bootstrap.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IDirectorsService _directorsService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IDirectorsService directorsService)
         {
             _logger = logger;
+            this._directorsService = directorsService;
         }
 
         public IActionResult Index()
@@ -63,9 +66,11 @@ namespace Core_MVC_Bootstrap.Controllers
         {
             return View();
         }
-        public IActionResult Career()
+        public async Task<IActionResult> BoardOfDirectors()
         {
-            return View();
+            List<TblDirectors> listDirectors =  await _directorsService.GetAllDirectors();
+
+            return View(listDirectors);
         }
 
 
