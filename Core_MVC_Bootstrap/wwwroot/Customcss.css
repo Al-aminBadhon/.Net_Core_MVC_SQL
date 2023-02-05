@@ -1,0 +1,15 @@
+﻿.bg-img-about {
+    background: url(../../../../images/img-about.jpg) no-repeat top center;
+    background-size: cover;
+    position: relative;
+}
+
+.container {
+    max-width: 96%;
+}
+
+.header {
+    padding: 6px 0px 12px 0px;
+    float: left;
+    width: 100%;
+}

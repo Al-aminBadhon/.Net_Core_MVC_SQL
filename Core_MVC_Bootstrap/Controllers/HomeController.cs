@@ -72,7 +72,12 @@ namespace Core_MVC_Bootstrap.Controllers
 
             return View(listDirectors);
         }
+        public  IActionResult ShipManagement()
+        {
+            return View();
+        }
 
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

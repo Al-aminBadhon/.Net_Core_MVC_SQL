@@ -5075,9 +5075,10 @@ option {
 }
 
 .bg-img-about {
-  background: url(../imgs/page/about/img-about.png) no-repeat top center;
-  background-size: cover;
-  position: relative;
+    /*background: url(../imgs/page/about/img-about.png) no-repeat top center;*/
+    background: url(../../../../images/img-about.jpg) no-repeat top center;
+    background-size: cover;
+    position: relative;
 }
 .bg-img-about .container {
   z-index: 2;
