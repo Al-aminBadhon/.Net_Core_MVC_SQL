@@ -1,4 +1,5 @@
 ﻿using App.BLL.ServiceContracts;
+using App.DAL.Data;
 using App.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,8 @@ namespace Core_MVC_Bootstrap.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IDirectorsService _directorsService;
+        private readonly MHDBContext _context;
+
 
         public HomeController(ILogger<HomeController> logger, IDirectorsService directorsService)
         {
@@ -77,6 +80,11 @@ namespace Core_MVC_Bootstrap.Controllers
             return View();
         }
 
+        public IActionResult Gallery()
+        {
+            List<TblGalleryPhoto> photos = new List<TblGalleryPhoto>();
+            return View(photos);
+        }
         
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
