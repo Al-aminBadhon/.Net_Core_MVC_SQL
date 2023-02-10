@@ -1,0 +1,377 @@
+﻿@model IEnumerable<App.DAL.Models.TblGalleryPhoto>
+
+@{
+    ViewData["Title"] = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+<head>
+
+    <script src="~/frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
+</head>
+<main class="main">
+    <section class="section-box">
+        <div class="breacrumb-cover bg-img-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="mb-10">Gallery</h2>
+                        <p class="font-lg color-text-paragraph-2">Get the latest news, updates and tips</p>
+                    </div>
+                    <div class="col-lg-6 text-lg-end">
+                        <ul class="breadcrumbs mt-40">
+                            <li><a class="home-icon" href="#">Home</a></li>
+                            <li>Gallery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-box mt-50">
+        <div class="post-loop-grid">
+            <div class="container">
+                <div class="text-center">
+                    <h6 class="f-18 color-text-mutted text-uppercase">Our company</h6>
+                    <p class="font-sm color-text-paragraph wow animate__animated animate__fadeInUp w-lg-50 mx-auto">
+                        Marine Hive Ltd is a seafarere's recruitment company that offers a comprehensive range
+                        of high quality marine services.It applies maritime expertise to ensure a safe and efficient
+                        operation for the shipping sector and steps ahead in providing energy to the shipping world.
+                    </p>
+                </div>
+                <div class="row mt-70">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Image)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Flag)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsDelete)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Details)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreatedDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreatedBy)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UpdatedDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Image)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Flag)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsDelete)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Details)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UpdatedDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UpdatedBy)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+
+                    <!-- Carousel wrapper -->
+                    <div id="carouselMultiItemExample"
+                         class="carousel slide carousel-dark text-center"
+                         data-mdb-ride="carousel">
+                        <!-- Controls -->
+                        <div class="d-flex justify-content-center mb-4">
+                            <button class="carousel-control-prev position-relative"
+                                    type="button"
+                                    data-mdb-target="#carouselMultiItemExample"
+                                    data-mdb-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next position-relative"
+                                    type="button"
+                                    data-mdb-target="#carouselMultiItemExample"
+                                    data-mdb-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <!-- Inner -->
+                        <div class="carousel-inner py-4">
+                            <!-- Single item -->
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/181.webp"
+                                                     class="card-img-top"
+                                                     alt="Waterfall" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+                                                     class="card-img-top"
+                                                     alt="Sunset Over the Sea" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/183.webp"
+                                                     class="card-img-top"
+                                                     alt="Sunset over the Sea" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single item -->
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+                                                     class="card-img-top"
+                                                     alt="Fissure in Sandstone" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
+                                                     class="card-img-top"
+                                                     alt="Storm Clouds" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
+                                                     class="card-img-top"
+                                                     alt="Hot Air Balloons" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single item -->
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
+                                                     class="card-img-top"
+                                                     alt="Peaks Against the Starry Sky" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
+                                                     class="card-img-top"
+                                                     alt="Bridge Over Water" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
+                                                     class="card-img-top"
+                                                     alt="Purbeck Heritage Coast" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single item -->
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
+                                                     class="card-img-top"
+                                                     alt="Peaks Against the Starry Sky" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
+                                                     class="card-img-top"
+                                                     alt="Bridge Over Water" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+                                            <div class="card">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
+                                                     class="card-img-top"
+                                                     alt="Purbeck Heritage Coast" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card title and make up the bulk
+                                                        of the card's content.
+                                                    </p>
+                                                    <a href="#!" class="btn btn-primary">Button</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Inner -->
+                    </div>
+                    <!-- Carousel wrapper -->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+

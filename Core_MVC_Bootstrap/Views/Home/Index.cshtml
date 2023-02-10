@@ -23,36 +23,36 @@
                         <div class="banner-5 shape-2"><img class="img-responsive" alt="jobBox" src="~/images/banner/Banner5.png"></div>
                         <div class="banner-6 shape-2"><img class="img-responsive" alt="jobBox" src="~/images/banner/Banner6.png"></div>
                     </div>
-                </div>  
+                </div>
             </div>
             <div class="box-search-2">
-              <div class="block-banner">
-                <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
-                  <form>
-                    <input class="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... ">
-                    <select class="form-input mr-10 select-active">
-                      <option value="">Location</option>
-                      <option value="AX">Dhaka</option>
-                      <option value="AF">Khulna</option>
-                      <option value="AF">Chitagong</option>
-                      <option value="AF">Sylhet</option>
-                      
-                    </select>
-                    <div class="box-industry">
-                      <select class="form-input mr-10 select-active input-industry">
-                        <option value="0">Industry</option>
-                        <option value="1">Software</option>
-                        <option value="2">Finance</option>
-                        <option value="3">Recruting</option>
-                        <option value="4">Management</option>
-                        <option value="5">Advertising</option>
-                        <option value="6">Development</option>
-                      </select>
+                <div class="block-banner">
+                    <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
+                        <form>
+                            <input class="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... ">
+                            <select class="form-input mr-10 select-active">
+                                <option value="">Location</option>
+                                <option value="AX">Dhaka</option>
+                                <option value="AF">Khulna</option>
+                                <option value="AF">Chitagong</option>
+                                <option value="AF">Sylhet</option>
+
+                            </select>
+                            <div class="box-industry">
+                                <select class="form-input mr-10 select-active input-industry">
+                                    <option value="0">Industry</option>
+                                    <option value="1">Software</option>
+                                    <option value="2">Finance</option>
+                                    <option value="3">Recruting</option>
+                                    <option value="4">Management</option>
+                                    <option value="5">Advertising</option>
+                                    <option value="6">Development</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-default btn-find font-sm">Search</button>
+                        </form>
                     </div>
-                    <button class="btn btn-default btn-find font-sm">Search</button>
-                  </form>
                 </div>
-              </div>
             </div>
         </div>
     </div>
@@ -1359,7 +1359,15 @@
 <section class="section-box mt-50 mb-30 bg-border-3 pt-100 pb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6"><img class="bdrd-10" src="FrontEnd/assets/imgs/page/homepage5/img-profile.png" alt="jobBox"></div>
+            <div class="col-lg-6">
+                @*<img class="bdrd-10" src="FrontEnd/assets/imgs/page/homepage5/img-profile.png" alt="jobBox">*@
+                @*<video width="320" height="240" autoplay muted loop controls>
+                    <source src="movie.mp4" type="video/mp4">
+                </video>*@
+                <video class="bdrd-10" @*controls="controls"*@ autoplay muted loop>
+                    <source src="~/video/march_video.mp4" type="video/mp4" />
+                </video>
+            </div>
             <div class="col-lg-6">
                 <div class="pl-30">
                     <h5 class="color-brand-2 mb-15 mt-15">Create Profile</h5>
