@@ -15,7 +15,11 @@
 }
 
 .bg-img-crewTraining {
-    /*background: url(../../../../images/CrewTraining/onebit_088.jpg) no-repeat top center;*/
+    background: url(../../../../images/CrewTraining/WMS-1.jpg) no-repeat top center;
     background-size: cover;
     position: relative;
+}
+.crewDetails-img {
+    height: 70px;
+    width: 70px;
 }
