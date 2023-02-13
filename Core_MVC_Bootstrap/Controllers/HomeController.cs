@@ -69,6 +69,11 @@ namespace Core_MVC_Bootstrap.Controllers
         {
             return View();
         }
+
+        public IActionResult CrewTraining()
+        {
+            return View();
+        }
         public async Task<IActionResult> BoardOfDirectors()
         {
             List<TblDirectors> listDirectors =  await _directorsService.GetAllDirectors();

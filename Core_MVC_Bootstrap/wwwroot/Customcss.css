@@ -13,3 +13,9 @@
     float: left;
     width: 100%;
 }
+
+.bg-img-crewTraining {
+    /*background: url(../../../../images/CrewTraining/onebit_088.jpg) no-repeat top center;*/
+    background-size: cover;
+    position: relative;
+}
