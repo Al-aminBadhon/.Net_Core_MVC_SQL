@@ -111,11 +111,11 @@
                                 <a asp-controller="Home" asp-action="Index">Home</a>
 
                             </li>
-                            <li>
+                            @*<li>
                                 <a class="outline" asp-controller="Job" asp-action="Index">Jobs</a>
-                            </li>
+                            </li>*@
                             <li class="has-children">
-                                <a href="jobs-grid.html">Our Services</a>
+                                <a>Our Services</a>
                                 <ul class="sub-menu">
                                     <li><a asp-controller="Home" asp-action="CrewManning">Crew Manning & Management</a></li>
                                     <li><a asp-controller="Home" asp-action="PortAgency">Port Agency</a></li>
@@ -169,11 +169,10 @@
 
                                 </ul>
                             </li>
-                            <li class="dashboard">
-                                @*<a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a>*@
+                           @* <li class="dashboard">
                                 <a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>
 
-                            </li>
+                            </li>*@
                         </ul>
                     </nav>
                     <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
