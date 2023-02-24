@@ -26,5 +26,15 @@ namespace App.Home.FileUploadService
 
             return imagePath;
         }
+        public async Task<string> UploadImageGallery(TblGalleryPhoto tblGalleryPhoto)
+        {
+            var locationWithName = "images/gallery/";
+            locationWithName += Guid.NewGuid().ToString() + "_" + tblGalleryPhoto.PhotoUpload.FileName;
+            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, locationWithName);
+            await tblGalleryPhoto.PhotoUpload.CopyToAsync(new FileStream(filePath, FileMode.Create));
+            var imagePath = "/" + locationWithName;
+
+            return imagePath;
+        }
     }
 }
