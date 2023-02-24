@@ -112,7 +112,7 @@
 
                             </li>
                             @*<li>
-                                <a class="outline" asp-controller="Job" asp-action="Index">Jobs</a>
+                            <a class="outline" asp-controller="Job" asp-action="Index">Jobs</a>
                             </li>*@
                             <li class="has-children">
                                 <a>Our Services</a>
@@ -169,8 +169,8 @@
 
                                 </ul>
                             </li>
-                           @* <li class="dashboard">
-                                <a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>
+                            @* <li class="dashboard">
+                            <a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>
 
                             </li>*@
                         </ul>
@@ -178,7 +178,7 @@
                     <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
                 </div>
                 <div class="header-right">
-                    <div class="block-signin"><a class="text-link-bd-btom hover-up" href="page-register.html">Register</a><a class="btn btn-default btn-shadow ml-40 hover-up" href="page-signin.html">Sign in</a></div>
+                    @*<div class="block-signin"><a class="text-link-bd-btom hover-up" href="page-register.html">Register</a><a class="btn btn-default btn-shadow ml-40 hover-up" href="page-signin.html">Sign in</a></div>*@
                 </div>
             </div>
         </div>
@@ -367,48 +367,89 @@
             <div class="row">
                 <div class="footer-col-1 col-md-3 col-sm-12">
                     <a href="index.html"><img alt="jobBox" src="~/frontend/assets/logo.jpeg"></a>
-                    <div class="mt-20 mb-20 font-xs color-text-paragraph-2">JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.</div>
+                    <div class="mt-20 mb-20 font-xs color-text-paragraph-2">
+                        Marine Hive Ltd is a seafarere's recruitment company that offers a comprehensive range of high quality marine services.
+                        <br />
+                        It applies maritime expertise to ensure a safe and efficient operation for the shipping sector and steps ahead in providing energy to the shipping world..
+                    </div>
                     <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
                 </div>
-                <div class="footer-col-2 col-md-2 col-xs-6">
-                    <h6 class="mb-20">Resources</h6>
+                <div class="footer-col-1 col-md-3 col-sm-12">
+                    <h6 class="mb-20">Our services</h6>
                     <ul class="menu-footer">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li>
+                            <a style="color:black" asp-controller="Home" asp-action="CrewManning">Crew Manning & Management</a>
+                            <p style="font-size: 12px;">We are the best managers & will satisfy our clients as they need.</p>
+                        </li>
+                        <li>
+                            <a style="color:black" asp-controller="Home" asp-action="PortAgency">Port Agency</a>
+                            <p style="font-size: 12px;">We endeavor our best to handle all port related jobs in due time.</p>
+                        </li>
+                        <li><a style="color:black" asp-controller="Home" asp-action="TechServices">Technical Services</a></li>
+                        <p style="font-size: 12px;">
+                            Our professionals are at your requirements. your satisfaction is our business.
+                            <br />our team is technically sound & always looking ahead.
+                        </p>
+                        <li><a style="color:black" asp-controller="Home" asp-action="ShipManagement">Ship Management</a></li>
                     </ul>
                 </div>
-                <div class="footer-col-3 col-md-2 col-xs-6">
-                    <h6 class="mb-20">Community</h6>
-                    <ul class="menu-footer">
-                        <li><a href="#">Feature</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Credit</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
+                @*<div class="footer-col-3 col-md-2 col-xs-6">
+                <h6 class="mb-20">Community</h6>
+                <ul class="menu-footer">
+                <li><a href="#">Feature</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Credit</a></li>
+                <li><a href="#">FAQ</a></li>
+                </ul>
+                </div>*@
+                <div class="footer-col-1 col-md-2 col-xs-6">
+                    <h6 class="mb-20">Contact</h6>
+                    <p>
+                        Flat-B4, House-42,
+                        Azad Bhaba (3rd Floor),
+                        Road-Gorib E Newaz Avenue,
+                        Sector-11, Uttara
+                        (Opposite to Exim Bank),
+                        Dhaka-1230, Bangladesh.
+                        <br />
+                        <br />
+                        Salam Valley, Flat-8F,
+                        Shantibag (Just beside police lines),
+                        Agrabad Access Road,
+                        Chattogram-4209.
+                        <br />
+                        <br />
+                        Dhaka: <br />
+                        (+88) 02 48963662  <br />
+
+                        (+88) 02 58953384  <br />
+
+                        (+88) 01713 428984 <br />
+
+                        Chattogram:        <br />
+
+                        (+88) 01713 428989 <br />
+
+                        (+88) 01713 428980 <br />
+                        <br />
+
+                        Email: <br /> crewing@marinehive.com<br />
+                        operations@marinehive.com
+
+                    </p>
                 </div>
-                <div class="footer-col-4 col-md-2 col-xs-6">
-                    <h6 class="mb-20">Quick links</h6>
-                    <ul class="menu-footer">
-                        <li><a href="#">iOS</a></li>
-                        <li><a href="#">Android</a></li>
-                        <li><a href="#">Microsoft</a></li>
-                        <li><a href="#">Desktop</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col-5 col-md-2 col-xs-6">
-                    <h6 class="mb-20">More</h6>
-                    <ul class="menu-footer">
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
+                @* <div class="footer-col-5 col-md-2 col-xs-6">
+                <h6 class="mb-20">More</h6>
+                <ul class="menu-footer">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">FAQ</a></li>
+                </ul>
+                </div>*@
                 <div class="footer-col-6 col-md-3 col-sm-12">
                     <h6 class="mb-20">Download App</h6>
-                    <p class="color-text-paragraph-2 font-xs">Download our Apps and get extra 15% Discount on your first Order&mldr;!</p>
+                    @*<p class="color-text-paragraph-2 font-xs">Download our Apps and get extra 15% Discount on your first Order&mldr;!</p>*@
                     <div class="mt-15"><a class="mr-5" href="#"><img src="~/frontend/assets/imgs/template/icons/app-store.png" alt="joxBox"></a><a href="#"><img src="~/frontend/assets/imgs/template/icons/android.png" alt="joxBox"></a></div>
                 </div>
             </div>
@@ -416,7 +457,7 @@
                 <div class="row">
                     <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2023. Marine Hive all right reserved</span></div>
                     <div class="col-md-6 text-md-end text-start">
-                        <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>
+                        @*<div class="footer-social"><a class="font-xs color-text-paragraph" href="">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>*@
                     </div>
                 </div>
             </div>
