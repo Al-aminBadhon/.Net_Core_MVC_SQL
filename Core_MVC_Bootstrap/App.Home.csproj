@@ -29,4 +29,8 @@
     <ProjectReference Include="..\App.BLL\App.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\gallery\" />
+  </ItemGroup>
+
 </Project>

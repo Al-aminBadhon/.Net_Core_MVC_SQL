@@ -7,5 +7,6 @@ namespace App.Home.FileUploadService
     public interface IFileUploadService
     { 
         Task<string> UploadImageDirector(TblDirectors tblDirectors);
+        Task<string> UploadImageGallery(TblGalleryPhoto tblGalleryPhoto);
     }
 }

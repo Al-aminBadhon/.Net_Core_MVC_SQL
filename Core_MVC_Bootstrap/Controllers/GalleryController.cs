@@ -21,14 +21,14 @@ namespace App.Home.Controllers
     public class GalleryController : Controller
     {
         private readonly MHDBContext _context;
-        private readonly IDirectorsService _directorsService;
+        private readonly IGalleryService _galleryService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IFileUploadService _fileUploadService;
 
 
-        public GalleryController(IDirectorsService directorsService, MHDBContext mHDBContext, IWebHostEnvironment webHostEnvironment, IFileUploadService fileUploadService)
+        public GalleryController(IGalleryService galleryService, MHDBContext mHDBContext, IWebHostEnvironment webHostEnvironment, IFileUploadService fileUploadService)
         {
-            this._directorsService = directorsService;
+            this._galleryService = galleryService;
             this._context = mHDBContext;
             this._fileUploadService = fileUploadService;
 
@@ -38,8 +38,8 @@ namespace App.Home.Controllers
         // GET: Directors
         public async Task<IActionResult> Index()
         {
-            List<TblDirectors> listDirectors = await _directorsService.GetAllDirectors();
-            return View(listDirectors);
+            List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
+            return View(tblGalleryPhotos);
         }
 
         // GET: Directors/Create
@@ -53,32 +53,32 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblDirectors tblDirectors)
+        public async Task<IActionResult> Create(/*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblGalleryPhoto tblGalleryPhoto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var imagePath = "";
-                    if (tblDirectors.PhotoUpload != null)
+                    if (tblGalleryPhoto.PhotoUpload != null)
                     {
-                        imagePath = await _fileUploadService.UploadImageDirector(tblDirectors);
-                        tblDirectors.Image = imagePath;
+                        imagePath = await _fileUploadService.UploadImageGallery(tblGalleryPhoto);
+                        tblGalleryPhoto.Image = imagePath;
                     }
-                    tblDirectors = await _directorsService.CreateDirectors(tblDirectors);
+                    tblGalleryPhoto = await _galleryService.CreateGalleryPhoto(tblGalleryPhoto);
 
-                    _context.Add(tblDirectors);
+                    _context.Add(tblGalleryPhoto);
                     await _context.SaveChangesAsync();
                 }
                 catch
                 {
                     throw;
                 }
-                //_directorsService.CreateDirectors(tblDirectors);
+                //_directorsService.CreateDirectors(tblGalleryPhoto);
                
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblDirectors);
+            return View(tblGalleryPhoto);
         }
 
         // GET: Directors/Edit/5
@@ -89,20 +89,20 @@ namespace App.Home.Controllers
                 return NotFound();
             }
 
-            var tblDirectors = await _context.TblDirectors.FindAsync(id);
-            if (tblDirectors == null)
+            var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
+            if (tblGalleryPhoto == null)
             {
                 return NotFound();
             }
-            return View(tblDirectors);
+            return View(tblGalleryPhoto);
         }
 
         // POST: Directors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, /*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,PhotoUpload")]*/ TblDirectors tblDirectors)
+        public async Task<IActionResult> Edit(int id, /*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,PhotoUpload")]*/ TblGalleryPhoto tblGalleryPhoto)
         {
-            if (id != tblDirectors.DirectorId)
+            if (id != tblGalleryPhoto.ImageId)
             {
                 return NotFound();
             }
@@ -116,16 +116,16 @@ namespace App.Home.Controllers
                     //    transaction.Rollback();
                     //}
                     var imagePath = "";
-                    if (tblDirectors.PhotoUpload != null)
+                    if (tblGalleryPhoto.PhotoUpload != null)
                     {
-                        imagePath = await _fileUploadService.UploadImageDirector(tblDirectors);
-                        tblDirectors.Image = imagePath;
+                        imagePath = await _fileUploadService.UploadImageGallery(tblGalleryPhoto);
+                        tblGalleryPhoto.Image = imagePath;
                     }
-                    tblDirectors = await _directorsService.UpdateDirectors(tblDirectors);
+                    tblGalleryPhoto = await _galleryService.UpdateGalleryPhoto(tblGalleryPhoto);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TblDirectorsExists(tblDirectors.DirectorId))
+                    if (!TblDirectorsExists(tblGalleryPhoto.ImageId))
                     {
                         return NotFound();
                     }
@@ -136,7 +136,7 @@ namespace App.Home.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tblDirectors);
+            return View(tblGalleryPhoto);
         }
 
         // GET: Directors/Delete/5
@@ -147,14 +147,14 @@ namespace App.Home.Controllers
                 return NotFound();
             }
 
-            var tblDirectors = await _context.TblDirectors
+            var tblGalleryPhoto = await _context.TblDirectors
                 .FirstOrDefaultAsync(m => m.DirectorId == id);
-            if (tblDirectors == null)
+            if (tblGalleryPhoto == null)
             {
                 return NotFound();
             }
 
-            return View(tblDirectors);
+            return View(tblGalleryPhoto);
         }
 
         // POST: Directors/Delete/5
@@ -162,8 +162,8 @@ namespace App.Home.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tblDirectors = await _context.TblDirectors.FindAsync(id);
-            _context.TblDirectors.Remove(tblDirectors);
+            var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
+            _context.TblDirectors.Remove(tblGalleryPhoto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
