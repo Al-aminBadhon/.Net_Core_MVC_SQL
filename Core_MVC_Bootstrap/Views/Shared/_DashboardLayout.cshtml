@@ -193,6 +193,24 @@
                     <li>
                         <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
                     </li>
+                    @* @if ((ViewData["userID"]).ToString() == "Admin")
+                    {*@
+                    <li>
+                        <a class="dashboard2" asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
+                        @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
+
+                    </li>
+                    @*}*@
+                    
+                    @* @if ((ViewData["userID"]).ToString() == "Admin")
+                    {*@
+                    <li>
+                        <a class="dashboard2" asp-controller="Gallery" asp-action="GalleryPhotoIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/computer.svg" alt="jobBox"><span class="name">Gallery Photos</span></a>
+                        @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
+
+                    </li>
+                    @*}*@
+
                     <li>
                         <a class="dashboard2" href="candidates.html"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Crew</span></a>
                     </li>
@@ -214,14 +232,7 @@
                     <li>
                         <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
-                   @* @if ((ViewData["userID"]).ToString() == "Admin")
-                        {*@
-                            <li>
-                                <a class="dashboard2" asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
-                                @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
-
-                            </li>
-                        @*}*@
+                   
 
 
                     <li>
