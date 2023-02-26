@@ -37,6 +37,10 @@ namespace Core_MVC_Bootstrap
 
             services.AddTransient<IDirectorsService, DirectorsService>();
             services.AddTransient<IDirectorsRepository, DirectorsRepository>();
+            
+            services.AddTransient<IGalleryService, GalleryService>();
+            services.AddTransient<IGalleryRepository, GalleryRepository>();
+
             services.AddTransient<IFileUploadService, FileUploadService>();
 
         }

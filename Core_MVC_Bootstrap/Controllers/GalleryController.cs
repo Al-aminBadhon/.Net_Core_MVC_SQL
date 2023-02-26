@@ -36,14 +36,14 @@ namespace App.Home.Controllers
         }
 
         // GET: Directors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GalleryPhotoIndex()
         {
             List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
             return View(tblGalleryPhotos);
         }
 
         // GET: Directors/Create
-        public IActionResult Create()
+        public IActionResult CreateGalleryPhoto()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(/*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblGalleryPhoto tblGalleryPhoto)
+        public async Task<IActionResult> CreateGalleryPhoto([Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblGalleryPhoto tblGalleryPhoto)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace App.Home.Controllers
         }
 
         // GET: Directors/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> EditGalleryPhoto(int? id)
         {
             if (id == null)
             {
@@ -100,7 +100,7 @@ namespace App.Home.Controllers
         // POST: Directors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, /*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,PhotoUpload")]*/ TblGalleryPhoto tblGalleryPhoto)
+        public async Task<IActionResult> EditGalleryPhoto(int id, [Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblGalleryPhoto tblGalleryPhoto)
         {
             if (id != tblGalleryPhoto.ImageId)
             {
