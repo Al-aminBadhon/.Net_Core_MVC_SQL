@@ -53,14 +53,16 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblDirectors tblDirectors)
+        public async Task<IActionResult> Create(/*[Bind("DirectorId,DirectorName,Designation,CompanyPost,Image,Details,FacebookLink,TwitterLink,LinkedInLink,IsDeleted,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblDirectors tblDirectors)
         {
             if (ModelState.IsValid)
             {
+                var imagePath = "";
                 //_directorsService.CreateDirectors(tblDirectors);
                 if (tblDirectors.PhotoUpload != null)
                 {
-                   
+                    imagePath = await _fileUploadService.UploadImageDirector(tblDirectors);
+                    tblDirectors.Image = imagePath;
                 }
                 _context.Add(tblDirectors);
                 await _context.SaveChangesAsync();

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using App.DAL.Data;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
@@ -9,13 +11,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.DAL.Models
 {
-    public partial class TblGalleryPhoto
+    public partial class TblGalleryPhoto : ModelBaseNew
     {
         public int ImageId { get; set; }
+        
         public string Name { get; set; }
+      
         public string Image { get; set; }
         public string Flag { get; set; }
         public bool IsDelete { get; set; }
+        
         public string Details { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedBy { get; set; }
