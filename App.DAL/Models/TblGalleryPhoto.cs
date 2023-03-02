@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.DAL.Models
 {
-    public partial class TblGalleryPhoto : ModelBaseNew
+    public partial class TblGalleryPhoto : ModelBase<TblGalleryPhoto>
     {
         public int ImageId { get; set; }
         
