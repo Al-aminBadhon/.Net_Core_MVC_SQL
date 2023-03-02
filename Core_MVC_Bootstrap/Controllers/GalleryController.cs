@@ -40,9 +40,17 @@ namespace App.Home.Controllers
         {
             List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
 
-           
+
 
             return View(tblGalleryPhotos);
+        }
+        public async Task<IActionResult> GetGalleryPhoto()
+        {
+            List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
+
+
+
+            return new JsonResult(tblGalleryPhotos);
         }
 
         // GET: Directors/Create
@@ -84,13 +92,19 @@ namespace App.Home.Controllers
                         tblGalleryPhoto.Image = imagePath;
                     }
                     //tblGalleryPhoto = await _galleryService.CreateGalleryPhoto(tblGalleryPhoto);
+                    List<string> category = new List<string>()
+            { "Certificate" ,"Random" ,"Visit"
 
+            };
+
+                    //assigning SelectListItem to view Bag
+                    ViewBag.Category = category;
 
                     //CommonService.SetCommonFields(tblGalleryPhoto);
                     tblGalleryPhoto.IsDelete = false;
                     tblGalleryPhoto.CreatedBy = 1;
                     tblGalleryPhoto.CreatedDate = DateTime.Now;
-                    
+
 
                     _context.Add(tblGalleryPhoto);
                     await _context.SaveChangesAsync();
@@ -100,7 +114,7 @@ namespace App.Home.Controllers
                     throw;
                 }
                 //_directorsService.CreateDirectors(tblGalleryPhoto);
-               
+
                 return RedirectToAction(nameof(GalleryPhotoIndex));
             }
             return View(tblGalleryPhoto);

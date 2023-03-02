@@ -37,11 +37,11 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Category</label>
-                    @*<select asp-for="Flag" name="category" class="form-control" asp-items="new SelectList(ViewBag.Category)">
+                    <select asp-for="Flag" name="category" class="form-control" asp-items="new SelectList(ViewBag.Category)" required>
                        <option value=""> --- Select One ---</option>
-                    </select>*@
+                    </select>
                     
-                    <input asp-for="Flag" class="form-control" />
+                   @* <input asp-for="Flag" class="form-control" required/>*@
                     <span asp-validation-for="Flag" class="text-danger"></span>
                 </div>
                 <div class="form-group">
