@@ -4,36 +4,47 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
-<div class="box-content">
-    <h1>Create</h1>
+ 
 
-    <h4>TblGalleryPhoto</h4>
-    <hr />
+<div class="box-content">
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-35">Add Gallery Photo</h3>
+        </div>
+        <div class="box-breadcrumb">
+            <a class="btn btn-dark" asp-action="GalleryPhotoIndex">Back to List</a>
+        </div>
+    </div>
     <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
+        <div class="form-control">
+            <form asp-action="Create" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
+             
                 <div class="form-group">
-                    <label asp-for="Image" class="control-label"></label>
-                    <input asp-for="Image" class="form-control" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
+                    <label class="control-label">Upload Profile Image</label>
+                    <input type="file" name="PhotoUpload" data-member="PhotoUpload" asp-for="PhotoUpload" class="form-control" />
+                    <span asp-validation-for="PhotoUpload" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Flag" class="control-label"></label>
-                    <input asp-for="Flag" class="form-control" />
-                    <span asp-validation-for="Flag" class="text-danger"></span>
+                    <label class="control-label">Category</label>
+                    <select asp-for="Flag" name="category" class="form-control" asp-items="new SelectList(ViewBag.Category)">
+                       <option value=""> --- Select One ---</option>
+                    </select>
+                    
+                    @*<input asp-for="Flag" class="form-control" />
+                    <span asp-validation-for="Flag" class="text-danger"></span>*@
                 </div>
                 <div class="form-group">
                     <label asp-for="Details" class="control-label"></label>
-                    <input asp-for="Details" class="form-control" />
+                    <textarea asp-for="Details" class="form-control" rows="5"></textarea>
                     <span asp-validation-for="Details" class="text-danger"></span>
                 </div>
-                
+
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
@@ -41,8 +52,5 @@
         </div>
     </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
 </div>
 

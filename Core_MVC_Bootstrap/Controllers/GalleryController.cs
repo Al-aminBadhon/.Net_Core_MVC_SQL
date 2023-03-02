@@ -39,12 +39,30 @@ namespace App.Home.Controllers
         public async Task<IActionResult> GalleryPhotoIndex()
         {
             List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
+
+           
+
             return View(tblGalleryPhotos);
         }
 
         // GET: Directors/Create
         public IActionResult CreateGalleryPhoto()
         {
+            //List<SelectListItem> category = new List<SelectListItem>()
+            //{
+            //    new SelectListItem { Value = "1", Text = "Certificate" },
+            //    new SelectListItem { Value = "2", Text = "Random" },
+            //    new SelectListItem { Value = "3", Text = "Visit" },
+
+            //};
+            List<string> category = new List<string>()
+            { "Certificate" ,"Random" ,"Visit"
+
+            };
+
+            //assigning SelectListItem to view Bag
+            ViewBag.Category = category;
+
             return View();
         }
 
