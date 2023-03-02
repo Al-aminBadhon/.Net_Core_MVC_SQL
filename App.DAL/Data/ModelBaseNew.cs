@@ -8,9 +8,9 @@ using System.Text;
 namespace App.DAL.Data
 {
     [Serializable]
-    public abstract class ModelBase<T> where T : ModelBase<T>
+    public abstract class ModelBaseNew
     {
-        public ModelBase()
+        public ModelBaseNew()
         {
             MarkNew();
             

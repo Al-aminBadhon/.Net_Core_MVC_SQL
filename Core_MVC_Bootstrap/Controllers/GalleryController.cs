@@ -71,7 +71,7 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateGalleryPhoto([Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblGalleryPhoto tblGalleryPhoto)
+        public async Task<IActionResult> CreateGalleryPhoto(/*[Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblGalleryPhoto tblGalleryPhoto)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,14 @@ namespace App.Home.Controllers
                         imagePath = await _fileUploadService.UploadImageGallery(tblGalleryPhoto);
                         tblGalleryPhoto.Image = imagePath;
                     }
-                    tblGalleryPhoto = await _galleryService.CreateGalleryPhoto(tblGalleryPhoto);
+                    //tblGalleryPhoto = await _galleryService.CreateGalleryPhoto(tblGalleryPhoto);
+
+
+                    //CommonService.SetCommonFields(tblGalleryPhoto);
+                    tblGalleryPhoto.IsDelete = false;
+                    tblGalleryPhoto.CreatedBy = 1;
+                    tblGalleryPhoto.CreatedDate = DateTime.Now;
+                    
 
                     _context.Add(tblGalleryPhoto);
                     await _context.SaveChangesAsync();
@@ -94,7 +101,7 @@ namespace App.Home.Controllers
                 }
                 //_directorsService.CreateDirectors(tblGalleryPhoto);
                
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(GalleryPhotoIndex));
             }
             return View(tblGalleryPhoto);
         }
@@ -118,7 +125,7 @@ namespace App.Home.Controllers
         // POST: Directors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditGalleryPhoto(int id, [Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] TblGalleryPhoto tblGalleryPhoto)
+        public async Task<IActionResult> EditGalleryPhoto(int id, /*[Bind("ImageId,Name,Image,Flag,IsDelete,Details,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblGalleryPhoto tblGalleryPhoto)
         {
             if (id != tblGalleryPhoto.ImageId)
             {
@@ -152,7 +159,7 @@ namespace App.Home.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(GalleryPhotoIndex));
             }
             return View(tblGalleryPhoto);
         }
@@ -183,7 +190,7 @@ namespace App.Home.Controllers
             var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
             _context.TblDirectors.Remove(tblGalleryPhoto);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(GalleryPhotoIndex));
         }
 
         private bool TblDirectorsExists(int id)

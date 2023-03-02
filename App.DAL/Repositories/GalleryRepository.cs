@@ -62,8 +62,9 @@ namespace App.DAL.Repositories
             try
             {
 
-                
 
+                tblGallery.UpdatedBy = 1;
+                tblGallery.UpdatedDate = DateTime.Now;
                 _mHDBContext.Update(tblGallery);
                 await _mHDBContext.SaveChangesAsync();
                 
