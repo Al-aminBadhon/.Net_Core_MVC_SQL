@@ -128,7 +128,7 @@ namespace App.Home.Controllers
                 return NotFound();
             }
 
-            var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
+            var tblGalleryPhoto = await _context.TblGalleryPhoto.FindAsync(id);
             if (tblGalleryPhoto == null)
             {
                 return NotFound();
@@ -179,7 +179,7 @@ namespace App.Home.Controllers
         }
 
         // GET: Directors/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> GalleryphotoDelete(int? id)
         {
             if (id == null)
             {
@@ -197,9 +197,9 @@ namespace App.Home.Controllers
         }
 
         // POST: Directors/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> GalleryphotoDelete(int id) 
         {
             var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
             _context.TblDirectors.Remove(tblGalleryPhoto);

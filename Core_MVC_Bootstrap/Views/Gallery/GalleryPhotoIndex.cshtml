@@ -9,7 +9,7 @@
     <script src="~/Scripts/Gallery/GalleryPhotoIndex.js"></script>
 }
 
-
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 
 
@@ -102,76 +102,89 @@
         </div>
 
         <div class="row">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="col-xl-12 col-12">
-                                <div class="card-grid-2 hover-up">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="box-padding">
-                                            <div class="row display-list">
-                                                <table id="photoList" class="display">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>
-                                                               Name
-                                                            </th>
-                                                            <th>
-                                                                Image
-                                                            </th>
-                                                            <th>
-                                                                Category
-                                                            </th>
-                                                            <th>
-                                                                Details
-                                                            </th>
-                                                            <th>
-                                                                Action
-                                                            </th>
 
-                                                        </tr>
-                                                    </thead>
-                                                    @*<tbody>
-                                                        <tr>
-                                                            <td> 1</td>
-                                                            <td>  badhon</td>
-                                                            <td> details value</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> 2</td>
-                                                            <td> fahim</td>
-                                                            <td> details value</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> 3</td>
-                                                            <td> saad</td>
-                                                            <td> details value</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> 4</td>
-                                                            <td> james</td>
-                                                            <td> details value</td>
-                                                        </tr>
+            <div class="col-xl-12 col-12">
+                <div class="card-grid-2 hover-up">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="box-padding">
+                                <div class="row display-list">
+                                    <table id="photoList" class="stripe row-border">
+                                        <thead align="center">
+                                            <tr>
+                                                <th>
+                                                    Name
+                                                </th>
 
-                                                    </tbody>*@
-                                                </table>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
+                                                <th>
+                                                    Category
+                                                </th>
+                                                <th>
+                                                    Details
+                                                </th>
+                                                <th>
+                                                    Image
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Flag)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Details)
+                                                </td>
+                                                <td>
+
+                                                    <p>&nbsp;</p><img src="@item.Image" height="60" width="100" style="display: block;" />
+
+                                                </td>
+                                                <td>
+                                                    <a asp-action="EditGalleryPhoto" class="" asp-route-id="@item.ImageId"><i class='fas fa-edit' style='font-size:25px;color:black'></i></a> |
+                                                    <a asp-action="Delete" asp-route-id="@item.ImageId"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
-                        </td>
-                    </tr>
-                
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>
 
+<link href="~/customcss.css" rel="stylesheet" />
+<style>
+    .update {
+        background-color: #07398a;
+        border: none;
+        color: white !important;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+</style>
 
 
 
