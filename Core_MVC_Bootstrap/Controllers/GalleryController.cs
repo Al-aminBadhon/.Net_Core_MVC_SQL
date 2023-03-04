@@ -44,13 +44,18 @@ namespace App.Home.Controllers
 
             return View(tblGalleryPhotos);
         }
-        public async Task<IActionResult> GetGalleryPhoto()
+        public async Task<IActionResult> GetGalleryPhoto(int id)
         {
-            List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
+            //List<TblGalleryPhoto> tblGalleryPhotos = await _galleryService.GetAllGallery();
 
 
+            var tblGalleryPhoto = await _context.TblGalleryPhoto.FindAsync(id);
+            tblGalleryPhoto.IsDelete = true;
+            _context.Update(tblGalleryPhoto);
+            await _context.SaveChangesAsync();
 
-            return new JsonResult(tblGalleryPhotos);
+
+            return new JsonResult(tblGalleryPhoto);
         }
 
         // GET: Directors/Create
@@ -194,7 +199,7 @@ namespace App.Home.Controllers
             }
             else
             {
-                GalleryPhotoDelete(tblGalleryPhoto.ImageId);
+                await GalleryPhotoDelete(tblGalleryPhoto.ImageId);
             }
 
             return RedirectToAction(nameof(GalleryPhotoIndex));
@@ -219,6 +224,7 @@ namespace App.Home.Controllers
 
             return View(tblGalleryPhoto);
         }
+        
 
         private bool TblDirectorsExists(int id)
         {

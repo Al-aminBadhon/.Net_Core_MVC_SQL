@@ -1,8 +1,10 @@
 ﻿
 $(document).ready(function () {
-    
 
+    //getDataTable();
     //alert('working');
+
+
     $('#photoList').DataTable({
         bProcessing: true,
         bLenghtChange: true,
@@ -28,6 +30,8 @@ $(document).ready(function () {
         ],
         responsive: true
     });
+
+
     //GetAllGalleryPhoto();
 });
 
@@ -39,6 +43,109 @@ function GetAllGalleryPhoto() {
         success: OnSuccess
     })
 
+}
+function getDataTable() {
+    $('#photoList').DataTable({
+        bProcessing: true,
+        bLenghtChange: true,
+        lengthMenu: [5, 10, 15, 20],
+        bfilter: true,
+        bSort: true,
+        bPagination: true,
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        //columnDefs: [
+        //    {
+        //        targets: -1,
+        //        className: 'dt-body-center'
+        //    }
+        //],
+        columnDefs: [
+            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true },
+            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
+            { width: "30%", "targets": 2, className: 'dt-body-center', "orderable": false },
+            { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
+            { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
+        ],
+        responsive: true
+    });
+
+}
+
+
+function btnDelete(id) {
+    //alert('ok');
+    //swal({
+    //    title: "Good job!",
+    //    text: "You clicked the button!",
+    //    icon: "success",
+    //    button: "Aww yiss!",
+    //}).then(result => {
+    //    if (result.isConfirmed) {
+
+    //    }
+    //});
+    
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this Image!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                debugger;
+                DeletePhoto(id);
+                setTimeout(() => {
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                }, 2000);
+
+                setTimeout(() => {
+                    location.reload();
+                }, 3500);
+                
+                
+
+            } else {
+                swal("Your file is safe! You cancelled to Deletion");
+            }
+        });
+
+}
+
+function DeletePhoto(id) {
+    debugger;
+    var formData = new FormData();
+    formData.append("id", id);
+    $.ajax({
+        url: '/Gallery/GalleryPhotoDelete' + '/' + id,
+        type: 'Get',
+        //data: formData,
+        //datatype: 'json',
+        
+    })
+
+
+
+
+    //$.ajax({
+    //    url: '/Gallery/GalleryPhotoDelete',
+    //    type: 'Post',
+    //    data: formData,
+    //    processData: false,
+    //    contentType: false,
+    //    async: true,
+    //    success: function (data) {
+    //        swal("Poof! Your imaginary file has been deleted!", {
+    //            icon: "success",
+    //        });
+    //    },
+    //})
+
 
     //"columns": [
     //    { data: "ID", name: "ID" },
@@ -46,55 +153,6 @@ function GetAllGalleryPhoto() {
     //]
 
 }
-
-
-//function btnDelete() {
-//    var formData = new FormData();
-//    formData.append("lClaimID", LClaimID);
-//    $.ajax({
-//        url: '/Gallery/DeleteGalleryPhoto',
-//        type: 'post',
-//        data: formData,
-//        processData: false,
-//        contentType: false,
-//        async: true,
-//        success: function (data) {
-//            window.location.href = "/Gallery/GalleryPhotoIndex";
-//            $p.HideWaitMessage();
-//        },
-//    })
-
-
-//    //"columns": [
-//    //    { data: "ID", name: "ID" },
-//    //    { data: "Name", name: "Name" },
-//    //]
-
-//}
-
-//function DeletePhoto() {
-//    var formData = new FormData();
-//    formData.append("lClaimID", LClaimID);
-//    $.ajax({
-//        url: '/Gallery/DeleteGalleryPhoto',
-//        type: 'post',
-//        data: formData,
-//        processData: false,
-//        contentType: false,
-//        async: true,
-//        success: function (data) {
-//            window.location.href = "/Gallery/GalleryPhotoIndex";
-//            $p.HideWaitMessage();
-//        },
-//    })
-
-
-//    //"columns": [
-//    //    { data: "ID", name: "ID" },
-//    //    { data: "Name", name: "Name" },
-//    //]
-
-//}
 function OnSuccess(response) {
     $('#photoList').DataTable({
         bProcessing: true,

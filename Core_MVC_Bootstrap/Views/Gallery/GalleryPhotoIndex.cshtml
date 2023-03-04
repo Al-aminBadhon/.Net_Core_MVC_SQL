@@ -152,7 +152,7 @@
                                                 </td>
                                                 <td>
                                                     <a asp-action="EditGalleryPhoto" class="" asp-route-id="@item.ImageId"><i class='fas fa-edit' style='font-size:25px;color:black'></i></a> |
-                                                    <a asp-action="GalleryPhotoDelete" asp-route-id="@item.ImageId"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
+                                                    <a onclick="btnDelete(@item.ImageId)"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
                                                 </td>
                                             </tr>
                                         }
