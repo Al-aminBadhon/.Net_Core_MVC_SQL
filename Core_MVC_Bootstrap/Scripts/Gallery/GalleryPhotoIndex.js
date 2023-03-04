@@ -1,10 +1,32 @@
 ﻿
-
-
 $(document).ready(function () {
     //alert('working');
-
-    GetAllGalleryPhoto();
+    $('#photoList').DataTable({
+        bProcessing: true,
+        bLenghtChange: true,
+        lengthMenu: [5, 10, 15, 20],
+        bfilter: true,
+        bSort: true,
+        bPagination: true,
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        //columnDefs: [
+        //    {
+        //        targets: -1,
+        //        className: 'dt-body-center'
+        //    }
+        //],
+        columnDefs: [
+            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true },
+            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
+            { width: "30%", "targets": 2, className: 'dt-body-center', "orderable": false },
+            { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
+            { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
+        ],
+        responsive: true
+    });
+    //GetAllGalleryPhoto();
 });
 
 function GetAllGalleryPhoto() {
@@ -14,9 +36,7 @@ function GetAllGalleryPhoto() {
         datatype: 'json',
         success: OnSuccess
     })
-    //"columnDefs": [
-    //    { "width": 20 %, "targets": 0, "orderable": true },
-    //],
+
 
     //"columns": [
     //    { data: "ID", name: "ID" },
@@ -35,27 +55,36 @@ function OnSuccess(response) {
         data: response,
         columns: [
             {
-                data: "ID", render: function (data, type, row, meta) { return row.name },  width: "20%"
-            },
-            {
                 data: "Name", render: function (data, type, row, meta) {
-                    return '<img width="50%" src="' + row.image + '" />'
-                }, width: "20%"
+                    return '<p align="justify">' + row.name + '</p>'
+                }, width: "15%"
+            },
+
+            {
+                data: "Flag", render: function (data, type, row, meta) { return '<p align="justify">' + row.flag + '</p>' }, width: "15%"
             },
             {
-                data: "Image", render: function (data, type, row, meta) { return row.flag }, width: "10%"
+                data: "Details", render: function (data, type, row, meta) {
+                    return '<p align="justify">' + row.details + '</p>';
+                }, align: 'center', width: "40%", orderable: false
             },
             {
-                data: "Flag", render: function (data, type, row, meta) { return row.details }, align: 'center', width: "30%", orderable: false
+                data: "Image", render: function (data, type, row, meta) {
+                    return '&nbsp;' + '<img src="' + row.image + '" height="100" width="200" style="display: block;" />';
+                }, align: 'center', width: "20%", orderable: false
             },
             {
-                data: "Flag", render: function (data, type, row, meta) {
-                    return '<a asp-controller="Gallery" asp-action="EditGalleryPhoto" asp-route-id="'+row.imageId+'">Update</a>'
-                        + '|' + '<a class="btn btn-danger" asp-controller="Gallery" asp-action="Delete" asp-route-id="' + row.imageId + '">Delete</a>'
-                        + '<button type="button" class="btn btn-secondary btn-fab btn-sm"><i class="icon-table-edit"></i></button>'
-                }, align: 'center', width: "10%", orderable: false
+                data: "Action", render: function (data, type, row, meta) {
+                    return ' <a asp-action="EditGalleryPhoto" class="" asp-route-id="' + row.imageId + '"><i class="fas fa-edit" style="font-size: 30px; color:black"></i></a>|' +
+                        ' <a asp-action="GalleryphotoDelete" asp-route-id="' + row.imageId + '" > <i class="fas fa-trash-alt" style="font-size: 30px; color:red"></i></a>'
+                }, width: "20%", orderable: false
             }
         ]
+
+    });
+    $('#photoList tbody').on('dblclick', 'tr', function () {
+        var data = table.row(this).data();
+        alert('You clicked on ' + data[0] + '\'s row');
     });
 }
 
