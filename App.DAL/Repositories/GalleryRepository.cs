@@ -44,11 +44,11 @@ namespace App.DAL.Repositories
             }
 
         }
-         public async Task<TblGalleryPhoto> CreateGalleryPhoto(TblGalleryPhoto model)
+        public async Task<TblGalleryPhoto> CreateGalleryPhoto(TblGalleryPhoto model)
         {
             try
             {
-               
+
                 return model;
             }
             catch
@@ -57,7 +57,7 @@ namespace App.DAL.Repositories
             }
 
         }
-          public async Task<TblGalleryPhoto> UpdateGalleryPhoto(TblGalleryPhoto tblGallery)
+        public async Task<TblGalleryPhoto> UpdateGalleryPhoto(TblGalleryPhoto tblGallery)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace App.DAL.Repositories
                 tblGallery.UpdatedDate = DateTime.Now;
                 _mHDBContext.Update(tblGallery);
                 await _mHDBContext.SaveChangesAsync();
-                
+
             }
             catch
             {

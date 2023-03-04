@@ -178,7 +178,7 @@ namespace App.Home.Controllers
             return View(tblGalleryPhoto);
         }
 
-        // GET: Directors/Delete/5
+        //GET: Directors/Delete/5
         public async Task<IActionResult> GalleryphotoDelete(int? id)
         {
             if (id == null)
@@ -186,25 +186,38 @@ namespace App.Home.Controllers
                 return NotFound();
             }
 
-            var tblGalleryPhoto = await _context.TblDirectors
-                .FirstOrDefaultAsync(m => m.DirectorId == id);
+            var tblGalleryPhoto = await _context.TblGalleryPhoto
+                .FirstOrDefaultAsync(m => m.ImageId == id);
             if (tblGalleryPhoto == null)
             {
                 return NotFound();
             }
+            else
+            {
+                GalleryPhotoDelete(tblGalleryPhoto.ImageId);
+            }
 
-            return View(tblGalleryPhoto);
+            return RedirectToAction(nameof(GalleryPhotoIndex));
         }
 
         // POST: Directors/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GalleryphotoDelete(int id) 
+        public async Task<IActionResult> GalleryPhotoDelete(int id) 
         {
-            var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
-            _context.TblDirectors.Remove(tblGalleryPhoto);
+            //var tblGalleryPhoto = await _context.TblDirectors.FindAsync(id);
+            //_context.TblDirectors.Remove(tblGalleryPhoto);
+            //await _context.SaveChangesAsync();
+
+
+            var tblGalleryPhoto = await _context.TblGalleryPhoto.FindAsync(id);
+            tblGalleryPhoto.IsDelete = true;
+            _context.Update(tblGalleryPhoto);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(GalleryPhotoIndex));
+
+
+
+            return View(tblGalleryPhoto);
         }
 
         private bool TblDirectorsExists(int id)
