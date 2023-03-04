@@ -1,5 +1,7 @@
 ﻿
 $(document).ready(function () {
+    
+
     //alert('working');
     $('#photoList').DataTable({
         bProcessing: true,
@@ -44,6 +46,55 @@ function GetAllGalleryPhoto() {
     //]
 
 }
+
+
+//function btnDelete() {
+//    var formData = new FormData();
+//    formData.append("lClaimID", LClaimID);
+//    $.ajax({
+//        url: '/Gallery/DeleteGalleryPhoto',
+//        type: 'post',
+//        data: formData,
+//        processData: false,
+//        contentType: false,
+//        async: true,
+//        success: function (data) {
+//            window.location.href = "/Gallery/GalleryPhotoIndex";
+//            $p.HideWaitMessage();
+//        },
+//    })
+
+
+//    //"columns": [
+//    //    { data: "ID", name: "ID" },
+//    //    { data: "Name", name: "Name" },
+//    //]
+
+//}
+
+//function DeletePhoto() {
+//    var formData = new FormData();
+//    formData.append("lClaimID", LClaimID);
+//    $.ajax({
+//        url: '/Gallery/DeleteGalleryPhoto',
+//        type: 'post',
+//        data: formData,
+//        processData: false,
+//        contentType: false,
+//        async: true,
+//        success: function (data) {
+//            window.location.href = "/Gallery/GalleryPhotoIndex";
+//            $p.HideWaitMessage();
+//        },
+//    })
+
+
+//    //"columns": [
+//    //    { data: "ID", name: "ID" },
+//    //    { data: "Name", name: "Name" },
+//    //]
+
+//}
 function OnSuccess(response) {
     $('#photoList').DataTable({
         bProcessing: true,
