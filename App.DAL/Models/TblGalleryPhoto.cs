@@ -20,7 +20,6 @@ namespace App.DAL.Models
         public string Image { get; set; }
         public string Flag { get; set; }
         public bool IsDelete { get; set; }
-        
         public string Details { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedBy { get; set; }

@@ -2,6 +2,7 @@
 using App.DAL.Data;
 using App.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,15 @@ namespace Core_MVC_Bootstrap.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IDirectorsService _directorsService;
+        private readonly IGalleryService _galleryService;
         private readonly MHDBContext _context;
 
 
-        public HomeController(ILogger<HomeController> logger, IDirectorsService directorsService)
+        public HomeController(ILogger<HomeController> logger, IDirectorsService directorsService, MHDBContext context)
         {
             _logger = logger;
             this._directorsService = directorsService;
+            this._context = context;
         }
 
         public IActionResult Index()
@@ -85,9 +88,10 @@ namespace Core_MVC_Bootstrap.Controllers
             return View();
         }
 
-        public IActionResult Gallery()
+        public  IActionResult Gallery()
         {
             List<TblGalleryPhoto> photos = new List<TblGalleryPhoto>();
+            photos =  _context.TblGalleryPhoto.Where(x => x.IsDelete == false).ToList();
             return View(photos);
         }
         
