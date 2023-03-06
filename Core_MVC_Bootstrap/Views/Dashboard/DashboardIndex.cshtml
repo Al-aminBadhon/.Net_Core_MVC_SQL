@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "_DashboardLayout";
+
 }
 
 
@@ -27,23 +28,29 @@
                             <div class="card-info">
                                 <div class="card-title">
                                     <h3>
-                                        1568<span class="font-sm status up">25<span>%</span></span>
+                                        @Convert.ToInt32(ViewBag.ToalCompany)
+                                        @*<span class="font-sm status up">
+                                            25
+                                            <span>%</span>
+                                        </span>*@
                                     </h3>
                                 </div>
-                                <p class="color-text-paragraph-2">Interview Schedules</p>
+                                <p class="color-text-paragraph-2">Total Recuiters</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-4 col-sm-6">
                         <div class="card-style-1 hover-up">
-                            <div class="card-image"> <img src="~/dashBoard/assets/imgs/page/dashboard/bank.svg" alt="jobBox"></div>
+                            <div class="card-image"> 
+                                <img src="~/dashBoard/assets/imgs/page/dashboard/man.svg" alt="jobBox">
+                            </div>
                             <div class="card-info">
                                 <div class="card-title">
                                     <h3>
-                                        284<span class="font-sm status up">5<span>%</span></span>
+                                        284@*<span class="font-sm status up">5<span>%</span></span>*@
                                     </h3>
                                 </div>
-                                <p class="color-text-paragraph-2">Applied Jobs</p>
+                                <p class="color-text-paragraph-2">Total Crew</p>
                             </div>
                         </div>
                     </div>
@@ -53,10 +60,11 @@
                             <div class="card-info">
                                 <div class="card-title">
                                     <h3>
-                                        136<span class="font-sm status up">12<span>%</span></span>
+                                        136
+                                        @*<span class="font-sm status up">12<span>%</span></span>*@
                                     </h3>
                                 </div>
-                                <p class="color-text-paragraph-2">Task Bids Won</p>
+                                <p class="color-text-paragraph-2">Total Jobs</p>
                             </div>
                         </div>
                     </div>
@@ -66,10 +74,11 @@
                             <div class="card-info">
                                 <div class="card-title">
                                     <h3>
-                                        985<span class="font-sm status up">5<span>%</span></span>
+                                        985
+                                        @*<span class="font-sm status up">5<span>%</span></span>*@
                                     </h3>
                                 </div>
-                                <p class="color-text-paragraph-2">Application Sent</p>
+                                <p class="color-text-paragraph-2">Total Applied jobs</p>
                             </div>
                         </div>
                     </div>
@@ -79,65 +88,15 @@
                             <div class="card-info">
                                 <div class="card-title">
                                     <h3>
-                                        165<span class="font-sm status up">15<span>%</span></span>
+                                        165
+                                        @*<span class="font-sm status up">15<span>%</span></span>*@
                                     </h3>
                                 </div>
-                                <p class="color-text-paragraph-2">Profile Viewed</p>
+                                <p class="color-text-paragraph-2">Total Executives</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card-style-1 hover-up">
-                            <div class="card-image"> <img src="~/dashBoard/assets/imgs/page/dashboard/open-file.svg" alt="jobBox"></div>
-                            <div class="card-info">
-                                <div class="card-title">
-                                    <h3>
-                                        2356<span class="font-sm status down">- 2%</span>
-                                    </h3>
-                                </div>
-                                <p class="color-text-paragraph-2">New Messages</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card-style-1 hover-up">
-                            <div class="card-image"> <img src="~/dashBoard/assets/imgs/page/dashboard/doc.svg" alt="jobBox"></div>
-                            <div class="card-info">
-                                <div class="card-title">
-                                    <h3>
-                                        254<span class="font-sm status up">2<span>%</span></span>
-                                    </h3>
-                                </div>
-                                <p class="color-text-paragraph-2">Articles Added</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card-style-1 hover-up">
-                            <div class="card-image"> <img src="~/dashBoard/assets/imgs/page/dashboard/man.svg" alt="jobBox"></div>
-                            <div class="card-info">
-                                <div class="card-title">
-                                    <h3>
-                                        548<span class="font-sm status up">48<span>%</span></span>
-                                    </h3>
-                                </div>
-                                <p class="color-text-paragraph-2">CV Added</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card-style-1 hover-up">
-                            <div class="card-image"> <img src="~/dashBoard/assets/imgs/page/dashboard/man.svg" alt="jobBox"></div>
-                            <div class="card-info">
-                                <div class="card-title">
-                                    <h3>
-                                        548<span class="font-sm status up">48<span>%</span></span>
-                                    </h3>
-                                </div>
-                                <p class="color-text-paragraph-2">CV Added</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             @*<div class="section-box">

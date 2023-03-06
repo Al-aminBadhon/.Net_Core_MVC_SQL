@@ -397,7 +397,7 @@ namespace App.DAL.Data
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Details).HasMaxLength(50);
+                entity.Property(e => e.Details).IsRequired();
 
                 entity.Property(e => e.Flag).HasMaxLength(50);
 

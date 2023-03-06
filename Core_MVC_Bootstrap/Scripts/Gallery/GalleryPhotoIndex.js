@@ -99,7 +99,7 @@ function btnDelete(id) {
                 debugger;
                 DeletePhoto(id);
                 setTimeout(() => {
-                    swal("Poof! Your imaginary file has been deleted!", {
+                    swal("Poof! Your file has been deleted!", {
                         icon: "success",
                     });
                 }, 2000);
