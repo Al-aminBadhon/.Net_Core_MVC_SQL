@@ -109,55 +109,57 @@
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="box-padding">
                                 <div class="row display-list">
-                                    <table id="photoList" class="stripe row-border">
-                                        <thead align="center">
-                                            <tr>
-                                                <th>
-                                                    Name
-                                                </th>
+                                    <div class="table-responsive">
+                                        <table id="photoList" class="stripe row-border">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>
+                                                        Name
+                                                    </th>
 
-                                                <th>
-                                                    Category
-                                                </th>
-                                                <th>
-                                                    Details
-                                                </th>
-                                                <th>
-                                                    Image
-                                                </th>
-                                                <th>
-                                                    Action
-                                                </th>
+                                                    <th>
+                                                        Category
+                                                    </th>
+                                                    <th>
+                                                        Details
+                                                    </th>
+                                                    <th>
+                                                        Image
+                                                    </th>
+                                                    <th>
+                                                        Action
+                                                    </th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Flag)
-                                                </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify">@Html.DisplayFor(modelItem => item.Name)</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify"> @Html.DisplayFor(modelItem => item.Flag)</p>
+                                                    </td>
 
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Details)
-                                                </td>
-                                                <td>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify">@Html.DisplayFor(modelItem => item.Details)</p>
+                                                    </td>
+                                                    <td>
 
-                                                    <p>&nbsp;</p><img src="@item.Image" height="60" width="100" style="display: block;" />
+                                                        <p>&nbsp;</p><img src="@item.Image"  style="display: block;" />
 
-                                                </td>
-                                                <td>
-                                                    <a asp-action="EditGalleryPhoto" class="" asp-route-id="@item.ImageId"><i class='fas fa-edit' style='font-size:25px;color:black'></i></a> |
-                                                    <a onclick="btnDelete(@item.ImageId)"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="EditGalleryPhoto" class="" asp-route-id="@item.ImageId"><i class='fas fa-edit' style='font-size:25px;color:black'></i></a> |
+                                                        <a onclick="btnDelete(@item.ImageId)"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

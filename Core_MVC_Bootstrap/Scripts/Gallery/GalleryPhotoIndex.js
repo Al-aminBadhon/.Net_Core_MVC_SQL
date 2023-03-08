@@ -22,13 +22,13 @@ $(document).ready(function () {
         //    }
         //],
         columnDefs: [
-            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true },
-            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
+            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true  },
+            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true  },
             { width: "30%", "targets": 2, className: 'dt-body-center', "orderable": false },
             { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
             { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
         ],
-        responsive: true
+        //responsive: true
     });
 
 
