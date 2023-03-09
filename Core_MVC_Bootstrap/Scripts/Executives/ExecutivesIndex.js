@@ -5,7 +5,7 @@ $(document).ready(function () {
     //alert('working');
 
 
-    $('#photoList').DataTable({
+    $('#exicutivesList').DataTable({
         bProcessing: true,
         bLenghtChange: true,
         lengthMenu: [5, 10, 15, 20],
@@ -22,11 +22,11 @@ $(document).ready(function () {
         //    }
         //],
         columnDefs: [
-            { width: "18%", "targets": 0, className: 'dt-body-center', "orderable": true  },
-            { width: "12%", "targets": 1, className: 'dt-body-center', "orderable": true  },
-            { width: "40%", "targets": 2, className: 'dt-body-center', "orderable": false },
-            { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
-            { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
+            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true  },
+            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
+            { width: "15%", "targets": 2, className: 'dt-body-center', "orderable": false },
+            { width: "25%", "targets": 3, className: 'dt-body-center', "orderable": true },
+            { width: "20%", "targets": 4, className: 'dt-body-center', "orderable": false },
         ],
         //responsive: true
     });
@@ -35,43 +35,43 @@ $(document).ready(function () {
     //GetAllGalleryPhoto();
 });
 
-function GetAllGalleryPhoto() {
-    $.ajax({
-        url: '/Gallery/GetGalleryPhoto',
-        type: 'Get',
-        datatype: 'json',
-        success: OnSuccess
-    })
+//function GetAllGalleryPhoto() {
+//    $.ajax({
+//        url: '/Gallery/GetGalleryPhoto',
+//        type: 'Get',
+//        datatype: 'json',
+//        success: OnSuccess
+//    })
 
-}
-function getDataTable() {
-    $('#photoList').DataTable({
-        bProcessing: true,
-        bLenghtChange: true,
-        lengthMenu: [5, 10, 15, 20],
-        bfilter: true,
-        bSort: true,
-        bPagination: true,
-        rowReorder: {
-            selector: 'td:nth-child(2)'
-        },
-        //columnDefs: [
-        //    {
-        //        targets: -1,
-        //        className: 'dt-body-center'
-        //    }
-        //],
-        columnDefs: [
-            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true },
-            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
-            { width: "30%", "targets": 2, className: 'dt-body-center', "orderable": false },
-            { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
-            { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
-        ],
-        responsive: true
-    });
+//}
+//function getDataTable() {
+//    $('#photoList').DataTable({
+//        bProcessing: true,
+//        bLenghtChange: true,
+//        lengthMenu: [5, 10, 15, 20],
+//        bfilter: true,
+//        bSort: true,
+//        bPagination: true,
+//        rowReorder: {
+//            selector: 'td:nth-child(2)'
+//        },
+//        //columnDefs: [
+//        //    {
+//        //        targets: -1,
+//        //        className: 'dt-body-center'
+//        //    }
+//        //],
+//        columnDefs: [
+//            { width: "20%", "targets": 0, className: 'dt-body-center', "orderable": true },
+//            { width: "20%", "targets": 1, className: 'dt-body-center', "orderable": true },
+//            { width: "30%", "targets": 2, className: 'dt-body-center', "orderable": false },
+//            { width: "20%", "targets": 3, className: 'dt-body-center', "orderable": false },
+//            { width: "10%", "targets": 4, className: 'dt-body-center', "orderable": false },
+//        ],
+//        responsive: true
+//    });
 
-}
+//}
 
 
 function btnDelete(id) {
@@ -89,7 +89,7 @@ function btnDelete(id) {
     
     swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this Image!",
+        text: "Once deleted, you will not be able to recover this Executives!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -99,7 +99,7 @@ function btnDelete(id) {
                 debugger;
                 DeletePhoto(id);
                 setTimeout(() => {
-                    swal("Poof! Your file has been deleted!", {
+                    swal("Poof! Executive has been deleted!", {
                         icon: "success",
                     });
                 }, 2000);
@@ -117,12 +117,12 @@ function btnDelete(id) {
 
 }
 
-function DeletePhoto(id) {
+function DeleteExecutives(id) {
     debugger;
     var formData = new FormData();
     formData.append("id", id);
     $.ajax({
-        url: '/Gallery/GalleryPhotoDelete' + '/' + id,
+        url: '/Executives/DeleteExecutives' + '/' + id,
         type: 'Get',
         //data: formData,
         //datatype: 'json',

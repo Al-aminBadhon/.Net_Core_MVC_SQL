@@ -1,103 +1,100 @@
 ﻿@model IEnumerable<App.DAL.Models.TblExecutive>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Executives Index";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ExFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Designation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
+@section scripts{
+    <script src="~/Scripts/Executives/ExecutivesIndex.js"></script>
+}
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserRoleId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExFirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExLastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Designation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsApproved)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UpdatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UpdatedBy)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ExecutiveId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ExecutiveId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    
+
+<div class="box-content">
+
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-35">Executives Panel</h3>
+        </div>
+        <div class="box-breadcrumb">
+            <a class="btn btn-default" asp-controller="Executives" asp-action="CreateExecutive">Add Executives</a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xl-12 col-12">
+            <div class="card-grid-2 hover-up">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="box-padding">
+                            <div class="row display-list">
+                                <div class="table-responsive">
+                                    <table id="exicutivesList" class="stripe row-border">
+                                        <thead align="center">
+                                            <tr>
+                                                <th>
+                                                    Full Name
+                                                </th>
+                                                <th>
+                                                    Designation
+                                                </th>
+                                                <th>
+                                                    Primary Phone No.
+                                                </th>
+                                               
+                                                <th>
+                                                    Email
+                                                </th>
+                                               
+                                                <th>
+                                                    Action
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                   
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify">@Html.DisplayFor(modelItem => item.ExFirstName + item.ExLastName)  </p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify">  @Html.DisplayFor(modelItem => item.Designation)</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify"> @Html.DisplayFor(modelItem => item.Phone1)</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify"> @Html.DisplayFor(modelItem => item.Email)</p>
+
+                                                    </td>@*
+                                                    <td>
+                                                        <p class="color-text-paragraph font-sm" align="justify"> <p>&nbsp;</p><img src="@item.Image" style="display: block;" /></p>
+
+                                                    </td>*@
+                                                    
+                                                    <td>
+                                                        <a asp-action="EditExecutive" class="" asp-route-id="@item.ExecutiveId"><i class='fas fa-edit' style='font-size:25px;color:black'></i></a> |
+                                                        <a onclick="btnDelete(@item.ExecutiveId)"><i class='fas fa-trash-alt' style='font-size:25px;color:red'></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
