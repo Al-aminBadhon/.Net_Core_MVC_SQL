@@ -30,5 +30,7 @@ namespace App.DAL.Models
         public int? UpdatedBy { get; set; }
         [NotMapped]
         public IFormFile PhotoUpload { get; set; }
+        [NotMapped]
+        public string Password { get; set; }
     }
 }
