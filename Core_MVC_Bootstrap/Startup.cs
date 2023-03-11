@@ -31,6 +31,12 @@ namespace Core_MVC_Bootstrap
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSession(
+                obj =>{
+                    obj.IdleTimeout = TimeSpan.FromMinutes(10);
+                });
+
             services.AddControllersWithViews();
             services.AddDbContext<MHDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
@@ -65,6 +71,7 @@ namespace Core_MVC_Bootstrap
             });
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
