@@ -26,24 +26,6 @@ namespace App.Home.Controllers
             return View(await mHDBContext.ToListAsync());
         }
 
-        // GET: Login/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblUser = await _context.TblUser
-                .Include(t => t.UserRole)
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (tblUser == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblUser);
-        }
 
         // GET: Login/Create
         public IActionResult Create()
