@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using App.DAL.Data;
 using App.DAL.Models;
+using Microsoft.AspNetCore.Authorization;
+using App.DAL.Utilities;
 
 namespace App.Home.Controllers
 {
+    //[Authorize]
     public class ExecutivesController : Controller
     {
         private readonly MHDBContext _context;
+        private readonly AppUser _appUser;
 
-        public ExecutivesController(MHDBContext context)
+        public ExecutivesController(MHDBContext context, AppUser appUser)
         {
             _context = context;
+            _appUser = appUser;
         }
 
         // GET: Executives
@@ -54,23 +59,23 @@ namespace App.Home.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateExecutive(/*[Bind("ExecutiveId,UserRoleId,UserId,ExFirstName,ExLastName,Designation,Image,Address,Phone1,Phone2,Email,IsActive,IsApproved,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")]*/ TblExecutive tblExecutive)
+        public async Task<IActionResult> CreateExecutive(TblExecutive tblExecutive)
         {
             if (ModelState.IsValid)
             {
                 
                 tblExecutive.IsActive = true;
-                tblExecutive.CreatedBy = 1;
+                tblExecutive.CreatedBy = _appUser.UserID;
                 tblExecutive.CreatedDate = DateTime.Now;
 
                 TblUser tblUser = new TblUser();
                 tblUser.UserName = tblExecutive.Email;
-                tblUser.UserPassword = "123456";
+                tblUser.UserPassword = tblExecutive.Password;
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
 
                 tblExecutive.UserId = tblUser.UserId;
-                tblExecutive.UserRoleId = 3;
+                tblExecutive.UserRoleId = 4; //4=executive - user role
                 _context.Add(tblExecutive);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(ExecutiveIndex));

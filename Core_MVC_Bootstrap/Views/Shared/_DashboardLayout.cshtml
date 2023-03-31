@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css">
 
-    <title>@ViewData["userID"] | MARINE HIVE LTD </title>
+    <title>@User.Identity.Name | MARINE HIVE LTD </title>
 </head>
 <body>
 
@@ -110,16 +112,16 @@
                             @*<img alt="" src="~/images/no-image.jpg">*@
                             <img src="~/images/directors/659406dd-8bf6-43ed-b70b-5fe1ed11ff08_arefeen1.jpg" />
                             <div class="info-member">
-                                <strong class="color-brand-1">Steven Jobs</strong>
-                                    <a class="font-xs color-text-paragraph-2" id="dropdownProfile" data-bs-display="static">Super Admin</a>
-
-                               @* <div class="dropdown">
-                                    <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
-                                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
-                                        <li><a class="dropdown-item" href="profile.html">Profiles</a></li>
-                                        <li><a class="dropdown-item" href="my-resume.html">CV Manager</a></li>
-                                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                                    </ul>
+                                <strong class="color-brand-1">@HttpContextAccessor.HttpContext.Session.GetString("UserFirstName")</strong>
+                                @*<a class="font-xs color-text-paragraph-2" id="dropdownProfile" data-bs-display="static">Super Admin</a>*@
+                                <a class="btn btn-danger" asp-action="Logout" asp-controller="Login">Logout</a>
+                                @*<div class="dropdown">
+                                <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
+                                <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
+                                <li><a class="dropdown-item" href="profile.html">Profiles</a></li>
+                                <li><a class="dropdown-item" href="my-resume.html">CV Manager</a></li>
+                                <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                                </ul>
                                 </div>*@
                             </div>
                         </div>
@@ -196,59 +198,70 @@
             <a class="btn btn-expanded"></a>
             <nav class="nav-main-menu">
                 <ul class="main-menu">
-                    <li>
-                        <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
-                    </li>
-                    @* @if ((ViewData["userID"]).ToString() == "Admin")
-                    {*@
-                    <li>
-                        <a class="dashboard2" asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
-                        @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserRoleID") == 1)
+                    {
+                        <li>
+                            <a class="dashboard2 " asp-controller="Dashboard" asp-action="DashBoardIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Summary</span></a>
+                        </li>
+                        <li>
+                            <a class="dashboard2" asp-controller="Directors" asp-action="Index"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Directors</span></a>
 
-                    </li>
-                    @*}*@
-                    
-                    @* @if ((ViewData["userID"]).ToString() == "Admin")
-                    {*@
-                    <li>
-                        <a class="dashboard2" asp-controller="Gallery" asp-action="GalleryPhotoIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/computer.svg" alt="jobBox"><span class="name">Gallery Photos</span></a>
-                        @*<a asp-area="" asp-controller="Dashboard" asp-action="DashBoardIndex">Dashboard</a>*@
+                        </li>
+                        <li>
+                            <a class="dashboard2" asp-controller="Gallery" asp-action="GalleryPhotoIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/computer.svg" alt="jobBox"><span class="name">Gallery Photos</span></a>
 
-                    </li>
-                    @*}*@
+                        </li>
 
-                    <li>
-                        <a class="dashboard2" asp-controller="Executives" asp-action="ExecutiveIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Executives</span></a>
-                    </li>
+                        <li>
+                            <a class="dashboard2" asp-controller="Executives" asp-action="ExecutiveIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Executives</span></a>
+                        </li>
+                    }
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserRoleID") == 2) // 2= Crew
+                    {
+
+                    }
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserRoleID") == 3) //3=Company
+                    {
+
+                    }
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("UserRoleID") == 4) //4 = Executives
+                    {
+
+                        <li>
+                            <a class="dashboard2" asp-controller="Gallery" asp-action="GalleryPhotoIndex"><img src="~/dashBoard/assets/imgs/page/dashboard/computer.svg" alt="jobBox"><span class="name">Gallery Photos</span></a>
+
+                        </li>
+                    }
+
                     @*<li>
-                        <a class="dashboard2" href="recruiters.html"><img src="~/dashBoard/assets/imgs/page/dashboard/recruiters.svg" alt="jobBox"><span class="name">Recruiters</span></a>
+                    <a class="dashboard2" href="recruiters.html"><img src="~/dashBoard/assets/imgs/page/dashboard/recruiters.svg" alt="jobBox"><span class="name">Recruiters</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="my-job-grid.html"><img src="~/dashBoard/assets/imgs/page/dashboard/jobs.svg" alt="jobBox"><span class="name">Jobs</span></a>
+                    <a class="dashboard2" href="my-job-grid.html"><img src="~/dashBoard/assets/imgs/page/dashboard/jobs.svg" alt="jobBox"><span class="name">Jobs</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="my-tasks-list.html"><img src="~/dashBoard/assets/imgs/page/dashboard/tasks.svg" alt="jobBox"><span class="name">Tasks List</span></a>
+                    <a class="dashboard2" href="my-tasks-list.html"><img src="~/dashBoard/assets/imgs/page/dashboard/tasks.svg" alt="jobBox"><span class="name">Tasks List</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="profile.html"><img src="~/dashBoard/assets/imgs/page/dashboard/profiles.svg" alt="jobBox"><span class="name">My Profiles</span></a>
+                    <a class="dashboard2" href="profile.html"><img src="~/dashBoard/assets/imgs/page/dashboard/profiles.svg" alt="jobBox"><span class="name">My Profiles</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="my-resume.html"><img src="~/dashBoard/assets/imgs/page/dashboard/cv-manage.svg" alt="jobBox"><span class="name">CV Manage</span></a>
+                    <a class="dashboard2" href="my-resume.html"><img src="~/dashBoard/assets/imgs/page/dashboard/cv-manage.svg" alt="jobBox"><span class="name">CV Manage</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
+                    <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
-                   
 
 
+
                     <li>
-                        <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
+                    <a class="dashboard2" href="settings.html"><img src="~/dashBoard/assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="authentication.html"><img src="~/dashBoard/assets/imgs/page/dashboard/authentication.svg" alt="jobBox"><span class="name">Authentication</span></a>
+                    <a class="dashboard2" href="authentication.html"><img src="~/dashBoard/assets/imgs/page/dashboard/authentication.svg" alt="jobBox"><span class="name">Authentication</span></a>
                     </li>
                     <li>
-                        <a class="dashboard2" href="login.html"><img src="~/dashBoard/assets/imgs/page/dashboard/logout.svg" alt="jobBox"><span class="name">Logout</span></a>
+                    <a class="dashboard2" href="login.html"><img src="~/dashBoard/assets/imgs/page/dashboard/logout.svg" alt="jobBox"><span class="name">Logout</span></a>
                     </li>*@
                 </ul>
             </nav>
@@ -322,9 +335,9 @@
     <script src="~/dashBoard/assets/js/main.js?v=4.1"></script>
 
 
-    <script  src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
-   
+
     <script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
 
     @*<script src="~/js/site.js" asp-append-version="true"></script>*@

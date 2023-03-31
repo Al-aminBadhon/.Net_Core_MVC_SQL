@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using App.DAL.Data;
 using App.DAL.Models;
+using System.Security.Claims;
+using DotNetOpenAuth.InfoCard;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using App.DAL.Utilities;
 
 namespace App.Home.Controllers
 {
     public class LoginController : Controller
     {
         private readonly MHDBContext _context;
+        private readonly AppUser _appUser;
 
-        public LoginController(MHDBContext context)
+        public LoginController(MHDBContext context, AppUser appUser)
         {
             _context = context;
+            _appUser = appUser;
         }
 
         // GET: Login
@@ -49,6 +57,74 @@ namespace App.Home.Controllers
             }
             ViewData["UserRoleId"] = new SelectList(_context.TblUserRole, "UserRoleId", "UserRoleName", tblUser.UserRoleId);
             return View(tblUser);
+        }
+
+        public IActionResult Login()
+        {
+            ViewData["UserRoleId"] = new SelectList(_context.TblUserRole, "UserRoleId", "UserRoleName");
+            return View();
+        }
+
+        // POST: Login/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(TblUser tblUser, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                
+
+                var data = _context.TblUser.Where(e => e.UserName == tblUser.UserName && tblUser.UserPassword == e.UserPassword).FirstOrDefault();
+                if (data != null)
+                {
+                    var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, tblUser.UserName) },
+                        CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    var principal = new ClaimsPrincipal(identity);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    //HttpContext.Session.SetString("Username", "");
+
+                    if(data.UserRoleId == 1)
+                    {
+                        var Fullname = _context.TblExecutive.Where(e => e.UserId == data.UserId).FirstOrDefault();
+
+                        _appUser.UserFirstName = Fullname.ExFirstName;
+                    }
+                    _appUser.UserRoleID = data.UserRoleId;
+                    _appUser.UserID = data.UserId;
+                    _appUser.UserName = tblUser.UserName;
+
+                    
+                    var name = _appUser.UserName;
+
+                    if (!String.IsNullOrEmpty(returnUrl))
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
+                    return RedirectToAction("DashboardIndex", "DashBoard");
+                }
+                else
+                {
+                    ViewBag.ErrorMsg = "Username or password is incorrect";
+                    return View(tblUser);
+                }
+            }
+
+            //ViewData["UserRoleId"] = new SelectList(_context.TblUserRole, "UserRoleId", "UserRoleName", tblUser.UserRoleId);
+            return View(tblUser);
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var storedCookies = Request.Cookies.Keys;
+            foreach (var cookie in storedCookies)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+            return RedirectToAction(nameof(Login));
         }
 
         // GET: Login/Edit/5
@@ -102,36 +178,6 @@ namespace App.Home.Controllers
             }
             ViewData["UserRoleId"] = new SelectList(_context.TblUserRole, "UserRoleId", "UserRoleName", tblUser.UserRoleId);
             return View(tblUser);
-        }
-
-        // GET: Login/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblUser = await _context.TblUser
-                .Include(t => t.UserRole)
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (tblUser == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblUser);
-        }
-
-        // POST: Login/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var tblUser = await _context.TblUser.FindAsync(id);
-            _context.TblUser.Remove(tblUser);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool TblUserExists(int id)

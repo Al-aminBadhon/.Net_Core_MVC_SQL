@@ -15,9 +15,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using App.Home.FileUploadService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace App.Home.Controllers
 {
+    //[Authorize]
     public class GalleryController : Controller
     {
         private readonly MHDBContext _context;

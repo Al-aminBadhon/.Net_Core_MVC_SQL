@@ -84,7 +84,11 @@
                 </div>
                 <div class="header-nav">
                     <nav class="nav-main-menu">
-
+                        <div class="block-signin">
+                            <a class="btn btn-outline-dark hover-up" asp-controller="Login" asp-action="RegisterCrew">Crew Register</a> |
+                            <a class="btn btn-dark hover-up" asp-controller="Login" asp-action="RegisterCompany">Company Register</a>
+                            @*<a class="btn btn-default btn-shadow ml-40 hover-up" asp-controller="Login" asp-action="Login" asp-route-returnUrl="@Context.Request.Path">Sign in</a>*@
+                        </div>
                     </nav>
                 </div>
                 <div class="header-right">
@@ -178,8 +182,14 @@
                     <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
                 </div>
                 <div class="header-right">
-                    @*<div class="block-signin"><a class="text-link-bd-btom hover-up" href="page-register.html">Register</a><a class="btn btn-default btn-shadow ml-40 hover-up" href="page-signin.html">Sign in</a></div>*@
+                    <div class="block-signin">
+                        @*<a class="text-link-bd-btom hover-up" asp-controller="Login" asp-action="Register">Register</a>*@
+
+                        <a class="btn btn-default btn-shadow ml-40 hover-up" asp-controller="Login" asp-action="Login" asp-route-returnUrl="@Context.Request.Path">Sign in</a>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </header>
@@ -485,6 +495,50 @@
 
 
     </script>
+    <style>
+        .dropbtn1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown1 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown1-content1 {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown1-content1 a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown1-content1 a:hover {
+                    background-color: #f1f1f1
+                }
+
+        .dropdown1:hover .dropdown1-content1 {
+            display: block;
+        }
+
+        .dropdown1:hover .dropbtn1 {
+            background-color: #3e8e41;
+        }
+    </style>
 
 </body>
 </html>
